@@ -7,11 +7,3 @@ vim.opt.winbar = "%=%m %t"
 
 -- Set the textwidth to 80
 vim.opt.textwidth = 80
-
--- Add resume Telescope search keymap
-vim.keymap.set(
-  "n",
-  "<leader>sx",
-  require("telescope.builtin").resume,
-  { noremap = true, silent = true, desc = "Resume" }
-)
