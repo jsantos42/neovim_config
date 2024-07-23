@@ -25,7 +25,8 @@ return {
             else
               fallback()
             end
-          end, { "i", "s", "c" }),
+            -- apply in insert (i) and select (s) modes, but not on command-line (c) mode
+          end, { "i", "s" }),
         },
       })
     end,
