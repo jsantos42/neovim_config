@@ -3,7 +3,7 @@
 -- Add any additional options here
 
 -- Set the statusline to show the current file name
-vim.opt.winbar = "%=%m %t"
+vim.opt.winbar = "%t%m %="
 
 -- Set the textwidth to 80
 vim.opt.textwidth = 80
