@@ -10,6 +10,7 @@ vim.opt.textwidth = 80
 
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
+vim.g.php_cs_fixer_rules = "@PSR2"
 
 vim.o.tabstop = 4
 vim.o.expandtab = false
