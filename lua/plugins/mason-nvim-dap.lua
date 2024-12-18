@@ -20,6 +20,7 @@ return {
           ["/usr/src/wordpress/wp-content"] = "${workspaceFolder}",
           ["/usr/src/wordpress"] = "${workspaceFolder}/.wordpress-src",
           ["/tmp/bladecache"] = "${workspaceFolder}/bladecache",
+          ["/usr/src/wordpress/wp-config.php"] = "${workspaceFolder}/.docker/config/wp-config.php",
         },
       },
     }
