@@ -12,6 +12,27 @@ return {
           "--column",
           "--smart-case",
           "--hidden",
+          "--no-ignore",
+        },
+      },
+      pickers = {
+        find_files = {
+          hidden = true,
+          find_command = {
+            "rg",
+            "--files",
+            "--hidden",
+            "--no-ignore",
+            "--glob=!**/.git/*",
+            "--glob=!**/.idea/*",
+            "--glob=!**/.vscode/*",
+            "--glob=!**/build/*",
+            "--glob=!**/vendor/*",
+            "--glob=!**/dist/*",
+            "--glob=!**/yarn.lock",
+            "--glob=!**/package-lock.json",
+            "--glob=!**/node_modules/*",
+          },
         },
       },
       live_grep = {
