@@ -16,3 +16,4 @@ vim.g.lazyvim_php_lsp = "intelephense"
 vim.o.tabstop = 4
 vim.o.expandtab = false
 vim.o.shiftwidth = 0
+vim.o.relativenumber = false
