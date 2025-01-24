@@ -33,6 +33,10 @@ return {
           "!**/node_modules/*",
           "-g",
           "!**/bladecache/*",
+          "-g",
+          "!**/composer.lock",
+          "-g",
+          "!.docker/init.sql",
         },
       },
       pickers = {
