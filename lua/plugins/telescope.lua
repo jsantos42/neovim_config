@@ -36,7 +36,7 @@ return {
           "-g",
           "!**/composer.lock",
           "-g",
-          "!.docker/init.sql",
+          "!**/init.sql",
         },
       },
       pickers = {
