@@ -18,3 +18,4 @@ vim.o.tabstop = 4
 vim.o.expandtab = false
 vim.o.shiftwidth = 0
 vim.o.relativenumber = false
+vim.g.codeium_enabled = false
