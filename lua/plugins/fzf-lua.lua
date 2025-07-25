@@ -39,6 +39,12 @@ return {
             .. [[-g "!**/init.sql" ]],
         },
       })
+
+      vim.keymap.set("n", "<leader>sG", function()
+        require("fzf-lua").live_grep({
+          cwd = vim.fn.expand("%:p:h"),
+        })
+      end, { silent = true, desc = "Fzf Grep (Current Dir)" })
     end,
   },
 }
