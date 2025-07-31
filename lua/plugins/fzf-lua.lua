@@ -38,6 +38,9 @@ return {
             .. [[-g "!*min.js" ]]
             .. [[-g "!**/init.sql" ]],
         },
+        oldfiles = {
+          include_current_session = true,
+        },
       })
 
       vim.keymap.set("n", "<leader>sG", function()
