@@ -6,6 +6,8 @@ local function set_colorscheme()
   else
     vim.cmd.colorscheme "vague"
   end
+  -- Manually trigger the ColorScheme event to update UI components like bufferline
+  vim.cmd "doautocmd ColorScheme"
 end
 
 -- Set the colorscheme on startup
