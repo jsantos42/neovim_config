@@ -6,6 +6,7 @@ return {
     formatters_by_ft = {
       php = { "pint" },
       blade = { "blade-formatter" },
+      sql = { "sleek" },
     },
     formatters = {
       injected = { options = { ignore_errors = true } },
