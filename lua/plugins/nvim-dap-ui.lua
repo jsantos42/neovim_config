@@ -50,28 +50,26 @@ return {
       dapui.close()
     end
 
-    -- Enable soft wrapping in DAP UI windows using proper events
-    local function enable_wrap_in_dapui_windows()
-      -- Get all DAP UI windows and enable wrapping
+    -- Enable soft wrapping in DAP REPL window only
+    local function enable_wrap_in_repl()
       for _, win in pairs(vim.api.nvim_list_wins()) do
         local buf = vim.api.nvim_win_get_buf(win)
-        local buf_name = vim.api.nvim_buf_get_name(buf)
         local buf_ft = vim.api.nvim_buf_get_option(buf, "filetype")
 
-        -- Check if this is a DAP UI buffer
-        if buf_name:match("DAP") or buf_ft:match("dapui") or buf_ft == "dap-repl" then
+        -- Only enable wrapping in the REPL window
+        if buf_ft == "dap-repl" then
           vim.api.nvim_win_set_option(win, "wrap", true)
           vim.api.nvim_win_set_option(win, "linebreak", true)
         end
       end
     end
 
-    -- Hook into DAP UI open event to enable wrapping
+    -- Hook into DAP UI open event to enable wrapping in REPL
     local original_open = dapui.open
     dapui.open = function(...)
       original_open(...)
-      -- Small delay to ensure windows are created
-      vim.defer_fn(enable_wrap_in_dapui_windows, 100)
+      -- Small delay to ensure REPL window is created
+      vim.defer_fn(enable_wrap_in_repl, 100)
     end
   end,
   dependencies = {
