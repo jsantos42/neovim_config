@@ -11,7 +11,7 @@ return {
     }
     dap.configurations.php = {
       {
-        name = "Debug Observador",
+        name = "Debug ObservadorWordPress",
         type = "php",
         request = "launch",
         port = 9003,
@@ -21,6 +21,16 @@ return {
           ["/usr/src/wordpress"] = "${workspaceFolder}/.wordpress-src",
           ["/tmp/bladecache"] = "${workspaceFolder}/bladecache",
           ["/usr/src/wordpress/wp-config.php"] = "${workspaceFolder}/.docker/config/wp-config.php",
+        },
+      },
+      {
+        name = "Debug Cashier",
+        type = "php",
+        request = "launch",
+        port = 9003,
+        -- this is needed for a remote app running in a container
+        pathMappings = {
+          ["/var/www/html"] = "/Users/jas/Desktop/reposObs/cashier",
         },
       },
     }
