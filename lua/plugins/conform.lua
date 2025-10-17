@@ -4,9 +4,11 @@ return {
   optional = true,
   opts = {
     formatters_by_ft = {
-      php = { "pint" },
+      php = { "php-cs-fixer" },
       blade = { "blade-formatter" },
       sql = { "sleek" },
+      js = { "prettier" },
+      ts = { "prettier" },
     },
     formatters = {
       injected = { options = { ignore_errors = true } },
@@ -21,24 +23,17 @@ return {
           "--wrap-attributes",
           "preserve-aligned",
         },
-        cwd = util.root_file({
-          ".editorconfig",
-          "composer.json",
-          "package.json",
-        }),
         stdin = false,
       },
 
-      ["pint"] = {
-        meta = {
-          url = "https://github.com/laravel/pint",
-          description = "Laravel Pint is an opinionated PHP code style fixer for minimalists. Pint is built on top of PHP-CS-Fixer and makes it simple to ensure that your code style stays clean and consistent.",
+      ["php-cs-fixer"] = {
+        command = "php-cs-fixer",
+        args = {
+          "fix",
+          "--config",
+          ".php-cs-fixer.dist.php",
+          "$FILENAME",
         },
-        command = util.find_executable({
-          vim.fn.stdpath("data") .. "/mason/bin/pint",
-          "vendor/bin/pint",
-        }, "pint"),
-        args = { "$FILENAME", "--preset=psr12" },
         stdin = false,
       },
     },
