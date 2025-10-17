@@ -22,6 +22,10 @@ return {
           ["/tmp/bladecache"] = "${workspaceFolder}/bladecache",
           ["/usr/src/wordpress/wp-config.php"] = "${workspaceFolder}/.docker/config/wp-config.php",
         },
+        skipFiles = {
+          "**/wp-includes/**",
+          "**/vendor/**",
+        },
       },
       {
         name = "Debug Cashier",
