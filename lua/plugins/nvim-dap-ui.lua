@@ -1,3 +1,4 @@
+-- keymaps: https://github.com/rcarriga/nvim-dap-ui?tab=readme-ov-file#configuration
 return {
   "rcarriga/nvim-dap-ui",
   config = function()
@@ -24,13 +25,13 @@ return {
           size = 0.33,
           position = "right",
         },
-        {
-          elements = {
-            "repl",
-          },
-          size = 0.20,
-          position = "bottom",
-        },
+        -- {
+        --   elements = {
+        --     "repl",
+        --   },
+        --   size = 0.20,
+        --   position = "bottom",
+        -- },
       },
     })
 
