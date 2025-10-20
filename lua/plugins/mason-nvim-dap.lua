@@ -3,7 +3,7 @@ return {
   optional = true,
   opts = function()
     local dap = require("dap")
-    local path = require("mason-registry").get_package("php-debug-adapter"):get_install_path()
+    local path = vim.fn.expand("$MASON/packages/php-debug-adapter")
     dap.adapters.php = {
       type = "executable",
       command = "node",
