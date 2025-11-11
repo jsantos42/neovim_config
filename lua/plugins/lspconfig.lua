@@ -17,6 +17,14 @@ return {
             licenceKey = "foo", -- add your actual licenseKey
           },
         },
+        cssls = {},
+        somesass_ls = {
+          settings = {
+            somesass = {
+              suggestAllFromOpenDocument = false,
+            },
+          },
+        },
       },
     },
   },
