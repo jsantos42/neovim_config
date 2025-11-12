@@ -17,6 +17,9 @@ return {
             licenceKey = "foo", -- add your actual licenseKey
           },
         },
+        html = {
+          filetypes = { "html", "php", "blade" },
+        },
         cssls = {},
         somesass_ls = {
           settings = {
