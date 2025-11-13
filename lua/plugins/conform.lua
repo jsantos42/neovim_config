@@ -6,7 +6,7 @@ return {
     formatters_by_ft = {
       php = { "php-cs-fixer" },
       blade = { "blade-formatter" },
-      sql = { "sleek" },
+      sql = { "sqruff" },
       js = { "prettier" },
       ts = { "prettier" },
     },
