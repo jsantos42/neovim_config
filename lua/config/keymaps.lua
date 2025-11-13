@@ -13,3 +13,16 @@ vim.api.nvim_set_keymap(
 )
 
 vim.keymap.del("n", "<leader>dO")
+
+-- Preserve view position during undo/redo
+vim.keymap.set("n", "u", function()
+  local view = vim.fn.winsaveview()
+  vim.cmd("normal! u")
+  vim.fn.winrestview(view)
+end, { desc = "Undo without moving cursor" })
+
+vim.keymap.set("n", "<C-r>", function()
+  local view = vim.fn.winsaveview()
+  vim.cmd("normal! \x12") -- \x12 is Ctrl-R
+  vim.fn.winrestview(view)
+end, { desc = "Redo without moving cursor" })
