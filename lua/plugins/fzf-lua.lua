@@ -43,11 +43,22 @@ return {
           fd_opts = fd_base_opts,
           actions = {
             ["alt-e"] = function(_, opts)
-              local ext = vim.fn.input("Filter by extension: ")
+              local ext = vim.fn.input("Filter by extension (space-separated, ! to exclude): ")
               if ext and ext ~= "" then
-                ext = ext:gsub("^%.", "")
                 local new_opts = vim.tbl_deep_extend("keep", { resume = true }, opts.__call_opts or {})
-                new_opts.fd_opts = fd_base_opts .. " -e " .. ext
+                local base_opts = opts.fd_opts or opts.__call_opts.fd_opts
+                local fd_ext_opts = ""
+                -- Split by spaces and process each extension
+                for token in ext:gmatch("%S+") do
+                  if token:match("^!") then
+                    local exclude_ext = token:gsub("^!", ""):gsub("^%.", "")
+                    fd_ext_opts = fd_ext_opts .. " --exclude '*." .. exclude_ext .. "'"
+                  else
+                    local include_ext = token:gsub("^%.", "")
+                    fd_ext_opts = fd_ext_opts .. " -e " .. include_ext
+                  end
+                end
+                new_opts.fd_opts = base_opts .. fd_ext_opts
                 if opts.__call_fn then
                   opts.__call_fn(new_opts)
                 end
@@ -59,11 +70,22 @@ return {
           rg_opts = base_rg_opts,
           actions = {
             ["alt-e"] = function(_, opts)
-              local ext = vim.fn.input("Filter by extension: ")
+              local ext = vim.fn.input("Filter by extension (space-separated, ! to exclude): ")
               if ext and ext ~= "" then
-                ext = ext:gsub("^%.", "")
                 local new_opts = vim.tbl_deep_extend("keep", { resume = true }, opts.__call_opts or {})
-                new_opts.rg_opts = base_rg_opts .. " -g '*." .. ext .. "'"
+                local base_opts = opts.rg_opts or opts.__call_opts.rg_opts
+                local rg_glob_opts = ""
+                -- Split by spaces and process each extension
+                for token in ext:gmatch("%S+") do
+                  if token:match("^!") then
+                    local exclude_ext = token:gsub("^!", ""):gsub("^%.", "")
+                    rg_glob_opts = rg_glob_opts .. " -g '!*." .. exclude_ext .. "'"
+                  else
+                    local include_ext = token:gsub("^%.", "")
+                    rg_glob_opts = rg_glob_opts .. " -g '*." .. include_ext .. "'"
+                  end
+                end
+                new_opts.rg_opts = base_opts .. rg_glob_opts
                 if opts.__call_fn then
                   opts.__call_fn(new_opts)
                 end
