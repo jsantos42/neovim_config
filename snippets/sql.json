@@ -1,0 +1,1341 @@
+{
+  "CURRENT_TIMESTAMP": {
+    "prefix": ["current_timestamp", "CURRENT_TIMESTAMP"],
+    "body": ["CURRENT_TIMESTAMP"],
+    "description": "Snippet: Current timestamp"
+  },
+  "TIMESTAMP WITH TIME ZONE": {
+    "prefix": ["timestamptz", "timestamp with time zone"],
+    "body": ["TIMESTAMP WITH TIME ZONE"],
+    "description": "Snippet: Timestamp with timezone"
+  },
+  "VARCHAR": {
+    "prefix": "varchar",
+    "body": ["VARCHAR(${1:255})"],
+    "description": "Snippet: Variable character"
+  },
+  "BIGSERIAL": {
+    "prefix": "bigserial",
+    "body": ["BIGSERIAL"],
+    "description": "Snippet: Auto-incrementing 8-byte integer"
+  },
+  "SERIAL": {
+    "prefix": "serial",
+    "body": ["SERIAL"],
+    "description": "Snippet: Auto-incrementing 4-byte integer"
+  },
+  "NULL": {
+    "prefix": "null",
+    "body": ["NULL"],
+    "description": "Snippet: Null constraint"
+  },
+  "UNIQUE": {
+    "prefix": "unique",
+    "body": ["UNIQUE"],
+    "description": "Snippet: Unique constraint"
+  },
+  "DEFAULT": {
+    "prefix": "default",
+    "body": ["DEFAULT ${1:value}"],
+    "description": "Snippet: Default value"
+  },
+  "INTEGER": {
+    "prefix": ["integer", "int"],
+    "body": ["INTEGER"],
+    "description": "Snippet: 4-byte integer"
+  },
+  "BIGINT": {
+    "prefix": "bigint",
+    "body": ["BIGINT"],
+    "description": "Snippet: 8-byte integer"
+  },
+  "SMALLINT": {
+    "prefix": "smallint",
+    "body": ["SMALLINT"],
+    "description": "Snippet: 2-byte integer"
+  },
+  "NUMERIC": {
+    "prefix": ["numeric", "decimal"],
+    "body": ["NUMERIC(${1:precision}, ${2:scale})"],
+    "description": "Snippet: Exact numeric with precision and scale"
+  },
+  "REAL": {
+    "prefix": "real",
+    "body": ["REAL"],
+    "description": "Snippet: 4-byte floating point"
+  },
+  "DOUBLE PRECISION": {
+    "prefix": ["double", "double precision"],
+    "body": ["DOUBLE PRECISION"],
+    "description": "Snippet: 8-byte floating point"
+  },
+  "BOOLEAN": {
+    "prefix": ["boolean", "bool"],
+    "body": ["BOOLEAN"],
+    "description": "Snippet: Boolean true/false"
+  },
+  "CHAR": {
+    "prefix": "char",
+    "body": ["CHAR(${1:length})"],
+    "description": "Snippet: Fixed-length character"
+  },
+  "TEXT": {
+    "prefix": "text",
+    "body": ["TEXT"],
+    "description": "Snippet: Variable-length text"
+  },
+  "DATE": {
+    "prefix": "date",
+    "body": ["DATE"],
+    "description": "Snippet: Calendar date"
+  },
+  "TIME": {
+    "prefix": "time",
+    "body": ["TIME"],
+    "description": "Snippet: Time of day"
+  },
+  "TIMESTAMP": {
+    "prefix": "timestamp",
+    "body": ["TIMESTAMP"],
+    "description": "Snippet: Date and time"
+  },
+  "INTERVAL": {
+    "prefix": "interval",
+    "body": ["INTERVAL"],
+    "description": "Snippet: Time interval"
+  },
+  "UUID": {
+    "prefix": "uuid",
+    "body": ["UUID"],
+    "description": "Snippet: Universally unique identifier"
+  },
+  "JSON": {
+    "prefix": "json",
+    "body": ["JSON"],
+    "description": "Snippet: JSON data"
+  },
+  "JSONB": {
+    "prefix": "jsonb",
+    "body": ["JSONB"],
+    "description": "Snippet: Binary JSON data"
+  },
+  "BYTEA": {
+    "prefix": "bytea",
+    "body": ["BYTEA"],
+    "description": "Snippet: Binary data"
+  },
+  "ARRAY": {
+    "prefix": "array",
+    "body": ["${1:type}[]"],
+    "description": "Snippet: Array type"
+  },
+  "MONEY": {
+    "prefix": "money",
+    "body": ["MONEY"],
+    "description": "Snippet: Currency amount"
+  },
+  "INET": {
+    "prefix": "inet",
+    "body": ["INET"],
+    "description": "Snippet: IPv4 or IPv6 host address"
+  },
+  "CIDR": {
+    "prefix": "cidr",
+    "body": ["CIDR"],
+    "description": "Snippet: IPv4 or IPv6 network"
+  },
+  "MACADDR": {
+    "prefix": "macaddr",
+    "body": ["MACADDR"],
+    "description": "Snippet: MAC address"
+  },
+  "XML": {
+    "prefix": "xml",
+    "body": ["XML"],
+    "description": "Snippet: XML data"
+  },
+  "PRIMARY KEY": {
+    "prefix": ["pk", "primary key"],
+    "body": ["PRIMARY KEY"],
+    "description": "Snippet: Primary key constraint"
+  },
+  "FOREIGN KEY": {
+    "prefix": ["fk", "foreign key"],
+    "body": ["FOREIGN KEY (${1:column}) REFERENCES ${2:table}(${3:column})"],
+    "description": "Snippet: Foreign key constraint"
+  },
+  "NOT NULL": {
+    "prefix": ["not null", "notnull"],
+    "body": ["NOT NULL"],
+    "description": "Snippet: Not null constraint"
+  },
+  "CHECK": {
+    "prefix": "check",
+    "body": ["CHECK (${1:condition})"],
+    "description": "Snippet: Check constraint"
+  },
+  "REFERENCES": {
+    "prefix": "references",
+    "body": ["REFERENCES ${1:table}(${2:column})"],
+    "description": "Snippet: Foreign key reference"
+  },
+  "ON DELETE CASCADE": {
+    "prefix": ["on delete cascade", "cascade"],
+    "body": ["ON DELETE CASCADE"],
+    "description": "Snippet: Cascade on delete"
+  },
+  "ON UPDATE CASCADE": {
+    "prefix": "on update cascade",
+    "body": ["ON UPDATE CASCADE"],
+    "description": "Snippet: Cascade on update"
+  },
+  "SET NULL": {
+    "prefix": "set null",
+    "body": ["SET NULL"],
+    "description": "Snippet: Set null on delete/update"
+  },
+  "SET DEFAULT": {
+    "prefix": "set default",
+    "body": ["SET DEFAULT"],
+    "description": "Snippet: Set default on delete/update"
+  },
+  "SELECT": {
+    "prefix": "select",
+    "body": ["SELECT ${1:columns} FROM ${2:table}"],
+    "description": "Snippet: Select statement"
+  },
+  "INSERT INTO": {
+    "prefix": "insert",
+    "body": ["INSERT INTO ${1:table} (${2:columns}) VALUES (${3:values})"],
+    "description": "Snippet: Insert statement"
+  },
+  "UPDATE": {
+    "prefix": "update",
+    "body": ["UPDATE ${1:table} SET ${2:column} = ${3:value} WHERE ${4:condition}"],
+    "description": "Snippet: Update statement"
+  },
+  "DELETE FROM": {
+    "prefix": "delete",
+    "body": ["DELETE FROM ${1:table} WHERE ${2:condition}"],
+    "description": "Snippet: Delete statement"
+  },
+  "CREATE TABLE": {
+    "prefix": "create table",
+    "body": [
+      "CREATE TABLE ${1:table_name} (",
+      "  ${2:column_name} ${3:data_type}",
+      ");"
+    ],
+    "description": "Snippet: Create table statement"
+  },
+  "ALTER TABLE": {
+    "prefix": "alter table",
+    "body": ["ALTER TABLE ${1:table} ${2:action}"],
+    "description": "Snippet: Alter table statement"
+  },
+  "DROP TABLE": {
+    "prefix": "drop table",
+    "body": ["DROP TABLE ${1:IF EXISTS }${2:table}"],
+    "description": "Snippet: Drop table statement"
+  },
+  "CREATE INDEX": {
+    "prefix": "create index",
+    "body": ["CREATE INDEX ${1:index_name} ON ${2:table}(${3:column})"],
+    "description": "Snippet: Create index statement"
+  },
+  "DROP INDEX": {
+    "prefix": "drop index",
+    "body": ["DROP INDEX ${1:IF EXISTS }${2:index}"],
+    "description": "Snippet: Drop index statement"
+  },
+  "WHERE": {
+    "prefix": "where",
+    "body": ["WHERE ${1:condition}"],
+    "description": "Snippet: Where clause"
+  },
+  "AND": {
+    "prefix": "and",
+    "body": ["AND ${1:condition}"],
+    "description": "Snippet: And operator"
+  },
+  "OR": {
+    "prefix": "or",
+    "body": ["OR ${1:condition}"],
+    "description": "Snippet: Or operator"
+  },
+  "IN": {
+    "prefix": "in",
+    "body": ["IN (${1:values})"],
+    "description": "Snippet: In operator"
+  },
+  "BETWEEN": {
+    "prefix": "between",
+    "body": ["BETWEEN ${1:start} AND ${2:end}"],
+    "description": "Snippet: Between operator"
+  },
+  "LIKE": {
+    "prefix": "like",
+    "body": ["LIKE '${1:pattern}'"],
+    "description": "Snippet: Like operator"
+  },
+  "ILIKE": {
+    "prefix": "ilike",
+    "body": ["ILIKE '${1:pattern}'"],
+    "description": "Snippet: Case-insensitive like"
+  },
+  "IS NULL": {
+    "prefix": "is null",
+    "body": ["IS NULL"],
+    "description": "Snippet: Is null check"
+  },
+  "IS NOT NULL": {
+    "prefix": "is not null",
+    "body": ["IS NOT NULL"],
+    "description": "Snippet: Is not null check"
+  },
+  "ORDER BY": {
+    "prefix": "order by",
+    "body": ["ORDER BY ${1:column} ${2|ASC,DESC|}"],
+    "description": "Snippet: Order by clause"
+  },
+  "GROUP BY": {
+    "prefix": "group by",
+    "body": ["GROUP BY ${1:column}"],
+    "description": "Snippet: Group by clause"
+  },
+  "HAVING": {
+    "prefix": "having",
+    "body": ["HAVING ${1:condition}"],
+    "description": "Snippet: Having clause"
+  },
+  "LIMIT": {
+    "prefix": "limit",
+    "body": ["LIMIT ${1:count}"],
+    "description": "Snippet: Limit clause"
+  },
+  "OFFSET": {
+    "prefix": "offset",
+    "body": ["OFFSET ${1:count}"],
+    "description": "Snippet: Offset clause"
+  },
+  "JOIN": {
+    "prefix": "join",
+    "body": ["JOIN ${1:table} ON ${2:condition}"],
+    "description": "Snippet: Inner join"
+  },
+  "LEFT JOIN": {
+    "prefix": "left join",
+    "body": ["LEFT JOIN ${1:table} ON ${2:condition}"],
+    "description": "Snippet: Left outer join"
+  },
+  "RIGHT JOIN": {
+    "prefix": "right join",
+    "body": ["RIGHT JOIN ${1:table} ON ${2:condition}"],
+    "description": "Snippet: Right outer join"
+  },
+  "FULL JOIN": {
+    "prefix": "full join",
+    "body": ["FULL JOIN ${1:table} ON ${2:condition}"],
+    "description": "Snippet: Full outer join"
+  },
+  "CROSS JOIN": {
+    "prefix": "cross join",
+    "body": ["CROSS JOIN ${1:table}"],
+    "description": "Snippet: Cross join"
+  },
+  "UNION": {
+    "prefix": "union",
+    "body": ["UNION"],
+    "description": "Snippet: Union operator"
+  },
+  "UNION ALL": {
+    "prefix": "union all",
+    "body": ["UNION ALL"],
+    "description": "Snippet: Union all operator"
+  },
+  "INTERSECT": {
+    "prefix": "intersect",
+    "body": ["INTERSECT"],
+    "description": "Snippet: Intersect operator"
+  },
+  "EXCEPT": {
+    "prefix": "except",
+    "body": ["EXCEPT"],
+    "description": "Snippet: Except operator"
+  },
+  "AS": {
+    "prefix": "as",
+    "body": ["AS ${1:alias}"],
+    "description": "Snippet: Alias"
+  },
+  "DISTINCT": {
+    "prefix": "distinct",
+    "body": ["DISTINCT"],
+    "description": "Snippet: Distinct keyword"
+  },
+  "ALL": {
+    "prefix": "all",
+    "body": ["ALL"],
+    "description": "Snippet: All keyword"
+  },
+  "EXISTS": {
+    "prefix": "exists",
+    "body": ["EXISTS (${1:subquery})"],
+    "description": "Snippet: Exists operator"
+  },
+  "CASE": {
+    "prefix": "case",
+    "body": [
+      "CASE",
+      "  WHEN ${1:condition} THEN ${2:result}",
+      "  ELSE ${3:default}",
+      "END"
+    ],
+    "description": "Snippet: Case expression"
+  },
+  "COALESCE": {
+    "prefix": "coalesce",
+    "body": ["COALESCE(${1:value}, ${2:default})"],
+    "description": "Snippet: Coalesce function"
+  },
+  "NULLIF": {
+    "prefix": "nullif",
+    "body": ["NULLIF(${1:value1}, ${2:value2})"],
+    "description": "Snippet: Nullif function"
+  },
+  "CAST": {
+    "prefix": "cast",
+    "body": ["CAST(${1:expression} AS ${2:type})"],
+    "description": "Snippet: Cast expression"
+  },
+  "COUNT": {
+    "prefix": "count",
+    "body": ["COUNT(${1:*})"],
+    "description": "Snippet: Count aggregate"
+  },
+  "SUM": {
+    "prefix": "sum",
+    "body": ["SUM(${1:column})"],
+    "description": "Snippet: Sum aggregate"
+  },
+  "AVG": {
+    "prefix": "avg",
+    "body": ["AVG(${1:column})"],
+    "description": "Snippet: Average aggregate"
+  },
+  "MIN": {
+    "prefix": "min",
+    "body": ["MIN(${1:column})"],
+    "description": "Snippet: Minimum aggregate"
+  },
+  "MAX": {
+    "prefix": "max",
+    "body": ["MAX(${1:column})"],
+    "description": "Snippet: Maximum aggregate"
+  },
+  "CURRENT_DATE": {
+    "prefix": "current_date",
+    "body": ["CURRENT_DATE"],
+    "description": "Snippet: Current date"
+  },
+  "CURRENT_TIME": {
+    "prefix": "current_time",
+    "body": ["CURRENT_TIME"],
+    "description": "Snippet: Current time"
+  },
+  "NOW": {
+    "prefix": "now",
+    "body": ["NOW()"],
+    "description": "Snippet: Current timestamp function"
+  },
+  "BEGIN": {
+    "prefix": "begin",
+    "body": ["BEGIN;"],
+    "description": "Snippet: Begin transaction"
+  },
+  "COMMIT": {
+    "prefix": "commit",
+    "body": ["COMMIT;"],
+    "description": "Snippet: Commit transaction"
+  },
+  "ROLLBACK": {
+    "prefix": "rollback",
+    "body": ["ROLLBACK;"],
+    "description": "Snippet: Rollback transaction"
+  },
+  "SAVEPOINT": {
+    "prefix": "savepoint",
+    "body": ["SAVEPOINT ${1:name};"],
+    "description": "Snippet: Create savepoint"
+  },
+  "GRANT": {
+    "prefix": "grant",
+    "body": ["GRANT ${1:privileges} ON ${2:object} TO ${3:user}"],
+    "description": "Snippet: Grant privileges"
+  },
+  "REVOKE": {
+    "prefix": "revoke",
+    "body": ["REVOKE ${1:privileges} ON ${2:object} FROM ${3:user}"],
+    "description": "Snippet: Revoke privileges"
+  },
+  "CREATE VIEW": {
+    "prefix": "create view",
+    "body": [
+      "CREATE VIEW ${1:view_name} AS",
+      "SELECT ${2:columns}",
+      "FROM ${3:table};"
+    ],
+    "description": "Snippet: Create view"
+  },
+  "DROP VIEW": {
+    "prefix": "drop view",
+    "body": ["DROP VIEW ${1:IF EXISTS }${2:view}"],
+    "description": "Snippet: Drop view"
+  },
+  "CREATE FUNCTION": {
+    "prefix": "create function",
+    "body": [
+      "CREATE FUNCTION ${1:function_name}(${2:parameters})",
+      "RETURNS ${3:return_type} AS $$",
+      "BEGIN",
+      "  ${4:function_body}",
+      "END;",
+      "$$ LANGUAGE plpgsql;"
+    ],
+    "description": "Snippet: Create function"
+  },
+  "CREATE TRIGGER": {
+    "prefix": "create trigger",
+    "body": [
+      "CREATE TRIGGER ${1:trigger_name}",
+      "${2|BEFORE,AFTER|} ${3|INSERT,UPDATE,DELETE|} ON ${4:table}",
+      "FOR EACH ROW",
+      "EXECUTE FUNCTION ${5:function_name}();"
+    ],
+    "description": "Snippet: Create trigger"
+  },
+  "TRUNCATE": {
+    "prefix": "truncate",
+    "body": ["TRUNCATE TABLE ${1:table}"],
+    "description": "Snippet: Truncate table"
+  },
+  "RETURNING": {
+    "prefix": "returning",
+    "body": ["RETURNING ${1:*}"],
+    "description": "Snippet: Returning clause"
+  },
+  "WITH": {
+    "prefix": "with",
+    "body": [
+      "WITH ${1:cte_name} AS (",
+      "  ${2:query}",
+      ")"
+    ],
+    "description": "Snippet: Common table expression"
+  },
+  "WINDOW": {
+    "prefix": "window",
+    "body": ["WINDOW ${1:name} AS (${2:definition})"],
+    "description": "Snippet: Window definition"
+  },
+  "OVER": {
+    "prefix": "over",
+    "body": ["OVER (${1:window_definition})"],
+    "description": "Snippet: Window function over clause"
+  },
+  "PARTITION BY": {
+    "prefix": "partition by",
+    "body": ["PARTITION BY ${1:column}"],
+    "description": "Snippet: Partition by clause"
+  },
+  "ROW_NUMBER": {
+    "prefix": "row_number",
+    "body": ["ROW_NUMBER() OVER (${1:window})"],
+    "description": "Snippet: Row number window function"
+  },
+  "RANK": {
+    "prefix": "rank",
+    "body": ["RANK() OVER (${1:window})"],
+    "description": "Snippet: Rank window function"
+  },
+  "DENSE_RANK": {
+    "prefix": "dense_rank",
+    "body": ["DENSE_RANK() OVER (${1:window})"],
+    "description": "Snippet: Dense rank window function"
+  },
+  "LAG": {
+    "prefix": "lag",
+    "body": ["LAG(${1:column}, ${2:offset}) OVER (${3:window})"],
+    "description": "Snippet: Lag window function"
+  },
+  "LEAD": {
+    "prefix": "lead",
+    "body": ["LEAD(${1:column}, ${2:offset}) OVER (${3:window})"],
+    "description": "Snippet: Lead window function"
+  },
+  "GENERATED ALWAYS AS": {
+    "prefix": "generated",
+    "body": ["GENERATED ALWAYS AS (${1:expression}) STORED"],
+    "description": "Snippet: Generated column"
+  },
+  "IF EXISTS": {
+    "prefix": "if exists",
+    "body": ["IF EXISTS"],
+    "description": "Snippet: If exists clause"
+  },
+  "IF NOT EXISTS": {
+    "prefix": "if not exists",
+    "body": ["IF NOT EXISTS"],
+    "description": "Snippet: If not exists clause"
+  },
+  "CASCADE": {
+    "prefix": "cascade",
+    "body": ["CASCADE"],
+    "description": "Snippet: Cascade option"
+  },
+  "RESTRICT": {
+    "prefix": "restrict",
+    "body": ["RESTRICT"],
+    "description": "Snippet: Restrict option"
+  },
+  "COLLATE": {
+    "prefix": "collate",
+    "body": ["COLLATE ${1:collation}"],
+    "description": "Snippet: Collate clause"
+  },
+  "ENUM": {
+    "prefix": "enum",
+    "body": ["CREATE TYPE ${1:type_name} AS ENUM (${2:values})"],
+    "description": "Snippet: Create enum type"
+  },
+  "SEQUENCE": {
+    "prefix": "sequence",
+    "body": ["CREATE SEQUENCE ${1:sequence_name}"],
+    "description": "Snippet: Create sequence"
+  },
+  "NEXTVAL": {
+    "prefix": "nextval",
+    "body": ["NEXTVAL('${1:sequence_name}')"],
+    "description": "Snippet: Next value from sequence"
+  },
+  "CURRVAL": {
+    "prefix": "currval",
+    "body": ["CURRVAL('${1:sequence_name}')"],
+    "description": "Snippet: Current value from sequence"
+  },
+  "SETVAL": {
+    "prefix": "setval",
+    "body": ["SETVAL('${1:sequence_name}', ${2:value})"],
+    "description": "Snippet: Set sequence value"
+  },
+  "TINYINT": {
+    "prefix": "tinyint",
+    "body": ["TINYINT"],
+    "description": "Snippet: 1-byte integer (MySQL)"
+  },
+  "MEDIUMINT": {
+    "prefix": "mediumint",
+    "body": ["MEDIUMINT"],
+    "description": "Snippet: 3-byte integer (MySQL)"
+  },
+  "FLOAT": {
+    "prefix": "float",
+    "body": ["FLOAT"],
+    "description": "Snippet: Floating point number"
+  },
+  "BIT": {
+    "prefix": "bit",
+    "body": ["BIT(${1:length})"],
+    "description": "Snippet: Bit field"
+  },
+  "BLOB": {
+    "prefix": "blob",
+    "body": ["BLOB"],
+    "description": "Snippet: Binary large object"
+  },
+  "TINYBLOB": {
+    "prefix": "tinyblob",
+    "body": ["TINYBLOB"],
+    "description": "Snippet: Tiny binary large object"
+  },
+  "MEDIUMBLOB": {
+    "prefix": "mediumblob",
+    "body": ["MEDIUMBLOB"],
+    "description": "Snippet: Medium binary large object"
+  },
+  "LONGBLOB": {
+    "prefix": "longblob",
+    "body": ["LONGBLOB"],
+    "description": "Snippet: Long binary large object"
+  },
+  "TINYTEXT": {
+    "prefix": "tinytext",
+    "body": ["TINYTEXT"],
+    "description": "Snippet: Tiny text field"
+  },
+  "MEDIUMTEXT": {
+    "prefix": "mediumtext",
+    "body": ["MEDIUMTEXT"],
+    "description": "Snippet: Medium text field"
+  },
+  "LONGTEXT": {
+    "prefix": "longtext",
+    "body": ["LONGTEXT"],
+    "description": "Snippet: Long text field"
+  },
+  "DATETIME": {
+    "prefix": "datetime",
+    "body": ["DATETIME"],
+    "description": "Snippet: Date and time"
+  },
+  "YEAR": {
+    "prefix": "year",
+    "body": ["YEAR"],
+    "description": "Snippet: Year value"
+  },
+  "POINT": {
+    "prefix": "point",
+    "body": ["POINT"],
+    "description": "Snippet: Geometric point"
+  },
+  "LINESTRING": {
+    "prefix": "linestring",
+    "body": ["LINESTRING"],
+    "description": "Snippet: Geometric line"
+  },
+  "POLYGON": {
+    "prefix": "polygon",
+    "body": ["POLYGON"],
+    "description": "Snippet: Geometric polygon"
+  },
+  "GEOMETRY": {
+    "prefix": "geometry",
+    "body": ["GEOMETRY"],
+    "description": "Snippet: Geometric data"
+  },
+  "GEOGRAPHY": {
+    "prefix": "geography",
+    "body": ["GEOGRAPHY"],
+    "description": "Snippet: Geographic data"
+  },
+  "SMALLSERIAL": {
+    "prefix": "smallserial",
+    "body": ["SMALLSERIAL"],
+    "description": "Snippet: Auto-incrementing 2-byte integer"
+  },
+  "TIME WITH TIME ZONE": {
+    "prefix": "timetz",
+    "body": ["TIME WITH TIME ZONE"],
+    "description": "Snippet: Time with timezone"
+  },
+  "MACADDR8": {
+    "prefix": "macaddr8",
+    "body": ["MACADDR8"],
+    "description": "Snippet: MAC address (EUI-64)"
+  },
+  "TSQUERY": {
+    "prefix": "tsquery",
+    "body": ["TSQUERY"],
+    "description": "Snippet: Text search query"
+  },
+  "TSVECTOR": {
+    "prefix": "tsvector",
+    "body": ["TSVECTOR"],
+    "description": "Snippet: Text search vector"
+  },
+  "BOX": {
+    "prefix": "box",
+    "body": ["BOX"],
+    "description": "Snippet: Rectangular box"
+  },
+  "CIRCLE": {
+    "prefix": "circle",
+    "body": ["CIRCLE"],
+    "description": "Snippet: Circle"
+  },
+  "LINE": {
+    "prefix": "line",
+    "body": ["LINE"],
+    "description": "Snippet: Infinite line"
+  },
+  "LSEG": {
+    "prefix": "lseg",
+    "body": ["LSEG"],
+    "description": "Snippet: Line segment"
+  },
+  "PATH": {
+    "prefix": "path",
+    "body": ["PATH"],
+    "description": "Snippet: Geometric path"
+  },
+  "INT2": {
+    "prefix": "int2",
+    "body": ["INT2"],
+    "description": "Snippet: 2-byte integer (alias)"
+  },
+  "INT4": {
+    "prefix": "int4",
+    "body": ["INT4"],
+    "description": "Snippet: 4-byte integer (alias)"
+  },
+  "INT8": {
+    "prefix": "int8",
+    "body": ["INT8"],
+    "description": "Snippet: 8-byte integer (alias)"
+  },
+  "FLOAT4": {
+    "prefix": "float4",
+    "body": ["FLOAT4"],
+    "description": "Snippet: 4-byte float (alias)"
+  },
+  "FLOAT8": {
+    "prefix": "float8",
+    "body": ["FLOAT8"],
+    "description": "Snippet: 8-byte float (alias)"
+  },
+  "VARBIT": {
+    "prefix": "varbit",
+    "body": ["VARBIT(${1:length})"],
+    "description": "Snippet: Variable-length bit string"
+  },
+  "FROM": {
+    "prefix": "from",
+    "body": ["FROM ${1:table}"],
+    "description": "Snippet: From clause"
+  },
+  "INTO": {
+    "prefix": "into",
+    "body": ["INTO ${1:table}"],
+    "description": "Snippet: Into clause"
+  },
+  "VALUES": {
+    "prefix": "values",
+    "body": ["VALUES (${1:values})"],
+    "description": "Snippet: Values clause"
+  },
+  "SET": {
+    "prefix": "set",
+    "body": ["SET ${1:column} = ${2:value}"],
+    "description": "Snippet: Set clause"
+  },
+  "ON": {
+    "prefix": "on",
+    "body": ["ON ${1:condition}"],
+    "description": "Snippet: On clause"
+  },
+  "USING": {
+    "prefix": "using",
+    "body": ["USING (${1:columns})"],
+    "description": "Snippet: Using clause"
+  },
+  "NATURAL": {
+    "prefix": "natural",
+    "body": ["NATURAL"],
+    "description": "Snippet: Natural join modifier"
+  },
+  "INNER": {
+    "prefix": "inner",
+    "body": ["INNER"],
+    "description": "Snippet: Inner join keyword"
+  },
+  "OUTER": {
+    "prefix": "outer",
+    "body": ["OUTER"],
+    "description": "Snippet: Outer join keyword"
+  },
+  "LEFT": {
+    "prefix": "left",
+    "body": ["LEFT"],
+    "description": "Snippet: Left join keyword"
+  },
+  "RIGHT": {
+    "prefix": "right",
+    "body": ["RIGHT"],
+    "description": "Snippet: Right join keyword"
+  },
+  "FULL": {
+    "prefix": "full",
+    "body": ["FULL"],
+    "description": "Snippet: Full join keyword"
+  },
+  "CROSS": {
+    "prefix": "cross",
+    "body": ["CROSS"],
+    "description": "Snippet: Cross join keyword"
+  },
+  "ASC": {
+    "prefix": "asc",
+    "body": ["ASC"],
+    "description": "Snippet: Ascending order"
+  },
+  "DESC": {
+    "prefix": "desc",
+    "body": ["DESC"],
+    "description": "Snippet: Descending order"
+  },
+  "NULLS FIRST": {
+    "prefix": "nulls first",
+    "body": ["NULLS FIRST"],
+    "description": "Snippet: Nulls first in ordering"
+  },
+  "NULLS LAST": {
+    "prefix": "nulls last",
+    "body": ["NULLS LAST"],
+    "description": "Snippet: Nulls last in ordering"
+  },
+  "FETCH": {
+    "prefix": "fetch",
+    "body": ["FETCH FIRST ${1:count} ROWS ONLY"],
+    "description": "Snippet: Fetch rows clause"
+  },
+  "FOR UPDATE": {
+    "prefix": "for update",
+    "body": ["FOR UPDATE"],
+    "description": "Snippet: Row locking for update"
+  },
+  "FOR SHARE": {
+    "prefix": "for share",
+    "body": ["FOR SHARE"],
+    "description": "Snippet: Row locking for share"
+  },
+  "NOWAIT": {
+    "prefix": "nowait",
+    "body": ["NOWAIT"],
+    "description": "Snippet: No wait on lock"
+  },
+  "SKIP LOCKED": {
+    "prefix": "skip locked",
+    "body": ["SKIP LOCKED"],
+    "description": "Snippet: Skip locked rows"
+  },
+  "EXPLAIN": {
+    "prefix": "explain",
+    "body": ["EXPLAIN ${1:query}"],
+    "description": "Snippet: Explain query plan"
+  },
+  "ANALYZE": {
+    "prefix": "analyze",
+    "body": ["ANALYZE ${1:table}"],
+    "description": "Snippet: Analyze table statistics"
+  },
+  "VACUUM": {
+    "prefix": "vacuum",
+    "body": ["VACUUM ${1:table}"],
+    "description": "Snippet: Vacuum table"
+  },
+  "REINDEX": {
+    "prefix": "reindex",
+    "body": ["REINDEX ${1|TABLE,INDEX,DATABASE|} ${2:name}"],
+    "description": "Snippet: Reindex command"
+  },
+  "CLUSTER": {
+    "prefix": "cluster",
+    "body": ["CLUSTER ${1:table} USING ${2:index}"],
+    "description": "Snippet: Cluster table"
+  },
+  "COPY": {
+    "prefix": "copy",
+    "body": ["COPY ${1:table} FROM '${2:file}' WITH (FORMAT ${3|CSV,TEXT,BINARY|})"],
+    "description": "Snippet: Copy data from file"
+  },
+  "LOCK": {
+    "prefix": "lock",
+    "body": ["LOCK TABLE ${1:table} IN ${2|ACCESS SHARE,ROW SHARE,ROW EXCLUSIVE,SHARE UPDATE EXCLUSIVE,SHARE,SHARE ROW EXCLUSIVE,EXCLUSIVE,ACCESS EXCLUSIVE|} MODE"],
+    "description": "Snippet: Lock table"
+  },
+  "LISTEN": {
+    "prefix": "listen",
+    "body": ["LISTEN ${1:channel}"],
+    "description": "Snippet: Listen for notifications"
+  },
+  "NOTIFY": {
+    "prefix": "notify",
+    "body": ["NOTIFY ${1:channel}, '${2:payload}'"],
+    "description": "Snippet: Send notification"
+  },
+  "UNLISTEN": {
+    "prefix": "unlisten",
+    "body": ["UNLISTEN ${1:channel}"],
+    "description": "Snippet: Stop listening"
+  },
+  "PREPARE": {
+    "prefix": "prepare",
+    "body": ["PREPARE ${1:statement_name} AS ${2:query}"],
+    "description": "Snippet: Prepare statement"
+  },
+  "EXECUTE": {
+    "prefix": "execute",
+    "body": ["EXECUTE ${1:statement_name}"],
+    "description": "Snippet: Execute prepared statement"
+  },
+  "DEALLOCATE": {
+    "prefix": "deallocate",
+    "body": ["DEALLOCATE ${1:statement_name}"],
+    "description": "Snippet: Deallocate prepared statement"
+  },
+  "DECLARE": {
+    "prefix": "declare",
+    "body": ["DECLARE ${1:cursor_name} CURSOR FOR ${2:query}"],
+    "description": "Snippet: Declare cursor"
+  },
+  "FETCH NEXT": {
+    "prefix": "fetch next",
+    "body": ["FETCH NEXT FROM ${1:cursor_name}"],
+    "description": "Snippet: Fetch next from cursor"
+  },
+  "CLOSE": {
+    "prefix": "close",
+    "body": ["CLOSE ${1:cursor_name}"],
+    "description": "Snippet: Close cursor"
+  },
+  "DO": {
+    "prefix": "do",
+    "body": ["DO $$\nBEGIN\n  ${1:code}\nEND\n$$"],
+    "description": "Snippet: Anonymous code block"
+  },
+  "RAISE": {
+    "prefix": "raise",
+    "body": ["RAISE ${1|NOTICE,WARNING,EXCEPTION|} '${2:message}'"],
+    "description": "Snippet: Raise message"
+  },
+  "PERFORM": {
+    "prefix": "perform",
+    "body": ["PERFORM ${1:function_call}"],
+    "description": "Snippet: Perform function without result"
+  },
+  "RETURN": {
+    "prefix": "return",
+    "body": ["RETURN ${1:value}"],
+    "description": "Snippet: Return value"
+  },
+  "RETURN NEXT": {
+    "prefix": "return next",
+    "body": ["RETURN NEXT ${1:value}"],
+    "description": "Snippet: Return next row"
+  },
+  "RETURN QUERY": {
+    "prefix": "return query",
+    "body": ["RETURN QUERY ${1:query}"],
+    "description": "Snippet: Return query results"
+  },
+  "LOOP": {
+    "prefix": "loop",
+    "body": ["LOOP\n  ${1:statements}\n  EXIT WHEN ${2:condition};\nEND LOOP"],
+    "description": "Snippet: Loop statement"
+  },
+  "WHILE": {
+    "prefix": "while",
+    "body": ["WHILE ${1:condition} LOOP\n  ${2:statements}\nEND LOOP"],
+    "description": "Snippet: While loop"
+  },
+  "FOR": {
+    "prefix": "for",
+    "body": ["FOR ${1:var} IN ${2:range} LOOP\n  ${3:statements}\nEND LOOP"],
+    "description": "Snippet: For loop"
+  },
+  "FOREACH": {
+    "prefix": "foreach",
+    "body": ["FOREACH ${1:var} IN ARRAY ${2:array} LOOP\n  ${3:statements}\nEND LOOP"],
+    "description": "Snippet: Foreach loop"
+  },
+  "IF": {
+    "prefix": "if",
+    "body": ["IF ${1:condition} THEN\n  ${2:statements}\nEND IF"],
+    "description": "Snippet: If statement"
+  },
+  "ELSIF": {
+    "prefix": "elsif",
+    "body": ["ELSIF ${1:condition} THEN\n  ${2:statements}"],
+    "description": "Snippet: Elsif clause"
+  },
+  "ELSE": {
+    "prefix": "else",
+    "body": ["ELSE\n  ${1:statements}"],
+    "description": "Snippet: Else clause"
+  },
+  "EXIT": {
+    "prefix": "exit",
+    "body": ["EXIT WHEN ${1:condition}"],
+    "description": "Snippet: Exit loop"
+  },
+  "CONTINUE": {
+    "prefix": "continue",
+    "body": ["CONTINUE WHEN ${1:condition}"],
+    "description": "Snippet: Continue loop"
+  },
+  "EXCEPTION": {
+    "prefix": "exception",
+    "body": ["EXCEPTION\n  WHEN ${1:exception_type} THEN\n    ${2:handler}"],
+    "description": "Snippet: Exception handler"
+  },
+  "WHEN": {
+    "prefix": "when",
+    "body": ["WHEN ${1:condition} THEN ${2:result}"],
+    "description": "Snippet: When clause"
+  },
+  "THEN": {
+    "prefix": "then",
+    "body": ["THEN ${1:result}"],
+    "description": "Snippet: Then clause"
+  },
+  "END": {
+    "prefix": "end",
+    "body": ["END"],
+    "description": "Snippet: End keyword"
+  },
+  "MATERIALIZED": {
+    "prefix": "materialized",
+    "body": ["MATERIALIZED"],
+    "description": "Snippet: Materialized view modifier"
+  },
+  "RECURSIVE": {
+    "prefix": "recursive",
+    "body": ["RECURSIVE"],
+    "description": "Snippet: Recursive CTE modifier"
+  },
+  "LATERAL": {
+    "prefix": "lateral",
+    "body": ["LATERAL"],
+    "description": "Snippet: Lateral join modifier"
+  },
+  "TABLESAMPLE": {
+    "prefix": "tablesample",
+    "body": ["TABLESAMPLE ${1|BERNOULLI,SYSTEM|} (${2:percentage})"],
+    "description": "Snippet: Table sampling"
+  },
+  "ONLY": {
+    "prefix": "only",
+    "body": ["ONLY"],
+    "description": "Snippet: Only keyword"
+  },
+  "INHERITS": {
+    "prefix": "inherits",
+    "body": ["INHERITS (${1:parent_table})"],
+    "description": "Snippet: Table inheritance"
+  },
+  "CREATE TABLE LIKE": {
+    "prefix": "like_table",
+    "body": ["LIKE ${1:source_table} ${2|INCLUDING ALL,EXCLUDING ALL|}"],
+    "description": "Snippet: Create table like"
+  },
+  "UNLOGGED": {
+    "prefix": "unlogged",
+    "body": ["UNLOGGED"],
+    "description": "Snippet: Unlogged table modifier"
+  },
+  "TEMPORARY": {
+    "prefix": ["temporary", "temp"],
+    "body": ["TEMPORARY"],
+    "description": "Snippet: Temporary table modifier"
+  },
+  "CONCURRENTLY": {
+    "prefix": "concurrently",
+    "body": ["CONCURRENTLY"],
+    "description": "Snippet: Concurrent operation modifier"
+  },
+  "DEFERRABLE": {
+    "prefix": "deferrable",
+    "body": ["DEFERRABLE"],
+    "description": "Snippet: Deferrable constraint"
+  },
+  "INITIALLY DEFERRED": {
+    "prefix": "initially deferred",
+    "body": ["INITIALLY DEFERRED"],
+    "description": "Snippet: Initially deferred constraint"
+  },
+  "INITIALLY IMMEDIATE": {
+    "prefix": "initially immediate",
+    "body": ["INITIALLY IMMEDIATE"],
+    "description": "Snippet: Initially immediate constraint"
+  },
+  "NO ACTION": {
+    "prefix": "no action",
+    "body": ["NO ACTION"],
+    "description": "Snippet: No action on constraint violation"
+  },
+  "MATCH FULL": {
+    "prefix": "match full",
+    "body": ["MATCH FULL"],
+    "description": "Snippet: Match full foreign key"
+  },
+  "MATCH PARTIAL": {
+    "prefix": "match partial",
+    "body": ["MATCH PARTIAL"],
+    "description": "Snippet: Match partial foreign key"
+  },
+  "MATCH SIMPLE": {
+    "prefix": "match simple",
+    "body": ["MATCH SIMPLE"],
+    "description": "Snippet: Match simple foreign key"
+  },
+  "EXCLUDE": {
+    "prefix": "exclude",
+    "body": ["EXCLUDE USING ${1:index_method} (${2:element} WITH ${3:operator})"],
+    "description": "Snippet: Exclusion constraint"
+  },
+  "FILTER": {
+    "prefix": "filter",
+    "body": ["FILTER (WHERE ${1:condition})"],
+    "description": "Snippet: Aggregate filter"
+  },
+  "WITHIN GROUP": {
+    "prefix": "within group",
+    "body": ["WITHIN GROUP (ORDER BY ${1:column})"],
+    "description": "Snippet: Within group clause"
+  },
+  "GROUPING SETS": {
+    "prefix": "grouping sets",
+    "body": ["GROUPING SETS (${1:sets})"],
+    "description": "Snippet: Grouping sets"
+  },
+  "ROLLUP": {
+    "prefix": "rollup",
+    "body": ["ROLLUP (${1:columns})"],
+    "description": "Snippet: Rollup grouping"
+  },
+  "CUBE": {
+    "prefix": "cube",
+    "body": ["CUBE (${1:columns})"],
+    "description": "Snippet: Cube grouping"
+  },
+  "FIRST_VALUE": {
+    "prefix": "first_value",
+    "body": ["FIRST_VALUE(${1:column}) OVER (${2:window})"],
+    "description": "Snippet: First value window function"
+  },
+  "LAST_VALUE": {
+    "prefix": "last_value",
+    "body": ["LAST_VALUE(${1:column}) OVER (${2:window})"],
+    "description": "Snippet: Last value window function"
+  },
+  "NTH_VALUE": {
+    "prefix": "nth_value",
+    "body": ["NTH_VALUE(${1:column}, ${2:n}) OVER (${3:window})"],
+    "description": "Snippet: Nth value window function"
+  },
+  "NTILE": {
+    "prefix": "ntile",
+    "body": ["NTILE(${1:buckets}) OVER (${2:window})"],
+    "description": "Snippet: Ntile window function"
+  },
+  "PERCENT_RANK": {
+    "prefix": "percent_rank",
+    "body": ["PERCENT_RANK() OVER (${1:window})"],
+    "description": "Snippet: Percent rank window function"
+  },
+  "CUME_DIST": {
+    "prefix": "cume_dist",
+    "body": ["CUME_DIST() OVER (${1:window})"],
+    "description": "Snippet: Cumulative distribution window function"
+  },
+  "STRING_AGG": {
+    "prefix": "string_agg",
+    "body": ["STRING_AGG(${1:column}, '${2:delimiter}')"],
+    "description": "Snippet: String aggregation"
+  },
+  "ARRAY_AGG": {
+    "prefix": "array_agg",
+    "body": ["ARRAY_AGG(${1:column})"],
+    "description": "Snippet: Array aggregation"
+  },
+  "JSON_AGG": {
+    "prefix": "json_agg",
+    "body": ["JSON_AGG(${1:column})"],
+    "description": "Snippet: JSON aggregation"
+  },
+  "JSONB_AGG": {
+    "prefix": "jsonb_agg",
+    "body": ["JSONB_AGG(${1:column})"],
+    "description": "Snippet: JSONB aggregation"
+  },
+  "BOOL_AND": {
+    "prefix": "bool_and",
+    "body": ["BOOL_AND(${1:column})"],
+    "description": "Snippet: Boolean AND aggregate"
+  },
+  "BOOL_OR": {
+    "prefix": "bool_or",
+    "body": ["BOOL_OR(${1:column})"],
+    "description": "Snippet: Boolean OR aggregate"
+  },
+  "EVERY": {
+    "prefix": "every",
+    "body": ["EVERY(${1:condition})"],
+    "description": "Snippet: Every aggregate"
+  },
+  "BIT_AND": {
+    "prefix": "bit_and",
+    "body": ["BIT_AND(${1:column})"],
+    "description": "Snippet: Bitwise AND aggregate"
+  },
+  "BIT_OR": {
+    "prefix": "bit_or",
+    "body": ["BIT_OR(${1:column})"],
+    "description": "Snippet: Bitwise OR aggregate"
+  },
+  "XMLAGG": {
+    "prefix": "xmlagg",
+    "body": ["XMLAGG(${1:column})"],
+    "description": "Snippet: XML aggregation"
+  },
+  "RANGE": {
+    "prefix": "range",
+    "body": ["RANGE BETWEEN ${1:start} AND ${2:end}"],
+    "description": "Snippet: Window frame range"
+  },
+  "ROWS": {
+    "prefix": "rows",
+    "body": ["ROWS BETWEEN ${1:start} AND ${2:end}"],
+    "description": "Snippet: Window frame rows"
+  },
+  "GROUPS": {
+    "prefix": "groups",
+    "body": ["GROUPS BETWEEN ${1:start} AND ${2:end}"],
+    "description": "Snippet: Window frame groups"
+  },
+  "UNBOUNDED PRECEDING": {
+    "prefix": "unbounded preceding",
+    "body": ["UNBOUNDED PRECEDING"],
+    "description": "Snippet: Unbounded preceding frame"
+  },
+  "UNBOUNDED FOLLOWING": {
+    "prefix": "unbounded following",
+    "body": ["UNBOUNDED FOLLOWING"],
+    "description": "Snippet: Unbounded following frame"
+  },
+  "CURRENT ROW": {
+    "prefix": "current row",
+    "body": ["CURRENT ROW"],
+    "description": "Snippet: Current row frame"
+  },
+  "PRECEDING": {
+    "prefix": "preceding",
+    "body": ["${1:n} PRECEDING"],
+    "description": "Snippet: N preceding frame"
+  },
+  "FOLLOWING": {
+    "prefix": "following",
+    "body": ["${1:n} FOLLOWING"],
+    "description": "Snippet: N following frame"
+  },
+  "EXCLUDE CURRENT ROW": {
+    "prefix": "exclude current row",
+    "body": ["EXCLUDE CURRENT ROW"],
+    "description": "Snippet: Exclude current row from frame"
+  },
+  "EXCLUDE GROUP": {
+    "prefix": "exclude group",
+    "body": ["EXCLUDE GROUP"],
+    "description": "Snippet: Exclude group from frame"
+  },
+  "EXCLUDE TIES": {
+    "prefix": "exclude ties",
+    "body": ["EXCLUDE TIES"],
+    "description": "Snippet: Exclude ties from frame"
+  },
+  "EXCLUDE NO OTHERS": {
+    "prefix": "exclude no others",
+    "body": ["EXCLUDE NO OTHERS"],
+    "description": "Snippet: Exclude no others from frame"
+  }
+}
