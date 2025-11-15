@@ -28,11 +28,31 @@ return {
             },
           },
         },
-        sqruff = {},
+        sqls = {},
       },
     },
   },
 }
+
+--------------------------------------------------------------------------------
+--INFO: Regarding the SQL LSP server "sqls-server/sqls", you will need to add a
+-- config file in ~/.config/sqls/config.yml with the following:
+-- lowercaseKeywords: false
+-- connections:
+--   - alias: go
+--     driver: postgresql
+--     dataSourceName: host=127.0.0.1 port=5432 user=postgres password=postgres dbname=postgres sslmode=disable
+--
+-- You might also need to specify on the .sql file which connection you want to use:
+-- -- sqls:connection go
+--
+-- You might also need to install the "nanotee/sqls.nvim" plugin that works as
+-- the LSP client:
+-- return {
+--   "nanotee/sqls.nvim",
+--   ft = { "sql" },
+-- }
+--------------------------------------------------------------------------------
 
 -- -- Disable inlay hints in case error keeps popping up
 -- return {

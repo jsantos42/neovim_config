@@ -6,7 +6,7 @@ return {
     formatters_by_ft = {
       php = { "php-cs-fixer" },
       blade = { "blade-formatter" },
-      sql = { "sqruff" },
+      sql = { "sqruff" }, --INFO: if there's an error in the file (trailing comma for example), the formatting goes wrong
       js = { "prettier" },
       ts = { "prettier" },
     },
