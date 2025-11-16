@@ -54,6 +54,8 @@ return {
 -- }
 --------------------------------------------------------------------------------
 
+-- sed -i '' -E 's@isActive\(\)\{return void 0!==this\._activationResult&&1===this\._activationResult\.message\.resultCode\}isRevoked\(\)\{return void 0!==this\._activationResult&&3===this\._activationResult\.message\.resultCode\}isExpired\(\)\{return!1\}@isActive(){return true}isRevoked(){return false}isExpired(){return false}@' ~/.local/share/nvim/mason/packages/intelephense/node_modules/intelephense/lib/intelephense.js
+
 -- -- Disable inlay hints in case error keeps popping up
 -- return {
 --   {
