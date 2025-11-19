@@ -20,7 +20,7 @@ return {
         .. [[-g "!gulp.log" ]]
         .. [[-g "!**/init.sql" ]]
 
-      local fd_base_opts = [[--color=never --hidden --type f --type l ]]
+      local base_fd_opts = [[--color=never --hidden --type f --type l ]]
             .. [[--exclude "**/.git" ]]
             .. [[--exclude "**/.idea" ]]
             .. [[--exclude "**/.vscode" ]]
@@ -40,7 +40,7 @@ return {
         },
         files = {
           formatter = "path.filename_first",
-          fd_opts = fd_base_opts,
+          fd_opts = base_fd_opts,
           actions = {
             ["alt-e"] = function(_, opts)
               local ext = vim.fn.input("Filter by extension (space-separated, ! to exclude): ")
