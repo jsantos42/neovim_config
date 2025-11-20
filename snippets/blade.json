@@ -1,0 +1,7 @@
+{
+  "xdebug_break()": {
+    "prefix": "xdebug_break",
+    "body": ["@php\n\txdebug_break();\n@endphp"],
+    "description": "Snippet: xdebug"
+  }
+}
