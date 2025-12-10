@@ -28,7 +28,17 @@ return {
             },
           },
         },
+        tailwindcss = {},
         sqls = {},
+        pyright = {
+          settings = {
+            python = {
+              analysis = {
+                extraPaths = { "${workspaceFolder}/.venv/lib/python3.10/site-packages" },
+              },
+            },
+          },
+        },
       },
     },
   },
