@@ -27,3 +27,4 @@ vim.g.root_spec = {
 }
 
 vim.g.neovide_theme = "auto"
+vim.g.neovide_fullscreen = true
