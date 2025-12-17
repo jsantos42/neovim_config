@@ -9,6 +9,12 @@ return {
       command = "node",
       args = { path .. "/extension/out/phpDebug.js" },
     }
+    -- local mason_python = vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python"
+    -- dap.adapters.python = {
+    --   type = "executable",
+    --   command = mason_python,
+    --   args = { "-m", "debugpy.adapter" },
+    -- }
     dap.configurations.php = {
       {
         name = "Debug ObservadorWordPress",
@@ -57,6 +63,33 @@ return {
         },
       },
     }
+    -- dap.configurations.python = {
+      -- {
+      --   name = "Fast API",
+      --   type = "python",
+      --   request = "launch",
+      --   module = "uvicorn",
+      --   args = { "main:app", "--reload" },
+      --   cwd = "${workspaceFolder}",
+      --   console = "integratedTerminal",
+      --   justMyCode = true,
+      --   -- pathMappings = {
+      --   -- ["/usr/src/wordpress/wp-content"] = "${workspaceFolder}",
+      --   -- ["/usr/src/wordpress"] = "${workspaceFolder}/.wordpress-src",
+      --   -- ["/tmp/bladecache"] = "${workspaceFolder}/bladecache",
+      --   -- ["/usr/src/wordpress/wp-config.php"] = "${workspaceFolder}/.docker/config/wp-config.php",
+      --   -- },
+      -- },
+      -- {
+      --   name = "Fast API",
+      --   type = "python",
+      --   request = "attach",
+      --   connect = { host = "127.0.0.1", port = 5678 },
+      --   pathMappings = {
+      --     ["/app"] = "${workspaceFolder}/backend",
+      --   },
+      -- },
+    -- }
   end,
 }
 
