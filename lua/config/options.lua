@@ -25,3 +25,5 @@ vim.g.root_spec = {
   "lsp",
   "cwd",
 }
+
+vim.g.neovide_theme = "auto"
