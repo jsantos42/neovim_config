@@ -29,6 +29,16 @@ vim.g.root_spec = {
 -- Neovide
 vim.g.neovide_theme = "auto"
 vim.g.neovide_fullscreen = true
+vim.g.neovide_scale_factor = 1.0
+local change_scale_factor = function(delta)
+  vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
+end
+vim.keymap.set("n", "<D-=>", function()
+  change_scale_factor(1.1)
+end)
+vim.keymap.set("n", "<D-->", function()
+  change_scale_factor(1 / 1.1)
+end)
 -- https://neovide.dev/faq.html#how-can-i-use-cmd-ccmd-v-to-copy-and-paste
 -- if vim.g.neovide then
 --   vim.keymap.set("n", "<D-v>", '"+P') -- Paste normal mode
