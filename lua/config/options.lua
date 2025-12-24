@@ -39,3 +39,6 @@ end)
 vim.keymap.set("n", "<D-->", function()
   change_scale_factor(1 / 1.1)
 end)
+
+-- Prepend mise shims to PATH
+vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
