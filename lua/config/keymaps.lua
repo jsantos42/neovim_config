@@ -26,3 +26,8 @@ vim.keymap.set("n", "<C-r>", function()
   vim.cmd("normal! \x12") -- \x12 is Ctrl-R
   vim.fn.winrestview(view)
 end, { desc = "Redo without moving cursor" })
+
+-- Allow paste in neovide
+vim.keymap.set({ "n", "v", "s", "x", "o", "i", "l", "c", "t" }, "<D-v>", function()
+  vim.api.nvim_paste(vim.fn.getreg("+"), true, -1)
+end, { noremap = true, silent = true })
