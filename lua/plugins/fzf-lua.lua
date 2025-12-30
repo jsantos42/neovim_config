@@ -33,6 +33,7 @@ return {
         .. [[--exclude "*gulp.log" ]]
         .. [[--exclude "**/node_modules/*" ]]
 
+      local actions = require("fzf-lua.actions")
       require("fzf-lua").setup({
         winopts = {
           height = 1,
@@ -42,6 +43,8 @@ return {
           formatter = "path.filename_first",
           fd_opts = base_fd_opts,
           actions = {
+            ["ctrl-i"] = { actions.toggle_ignore },
+            ["ctrl-h"] = { actions.toggle_hidden },
             ["ctrl-e"] = function(_, opts)
               local ext = vim.fn.input("Filter by extension (space-separated, ! to exclude): ")
               if ext and ext ~= "" then
@@ -69,6 +72,8 @@ return {
         grep = {
           rg_opts = base_rg_opts,
           actions = {
+            ["ctrl-i"] = { actions.toggle_ignore },
+            ["ctrl-h"] = { actions.toggle_hidden },
             ["ctrl-e"] = function(_, opts)
               local ext = vim.fn.input("Filter by extension (space-separated, ! to exclude): ")
               if ext and ext ~= "" then
