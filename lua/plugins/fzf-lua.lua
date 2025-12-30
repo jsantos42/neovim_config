@@ -21,17 +21,17 @@ return {
         .. [[-g "!**/init.sql" ]]
 
       local base_fd_opts = [[--color=never --hidden --type f --type l ]]
-            .. [[--exclude "**/.git" ]]
-            .. [[--exclude "**/.idea" ]]
-            .. [[--exclude "**/.vscode" ]]
-            .. [[--exclude "**/build/*" ]]
-            .. [[--exclude "**/vendor/*" ]]
-            .. [[--exclude "**/dist/*" ]]
-            .. [[--exclude "**/yarn.lock" ]]
-            .. [[--exclude "**/package-lock.json" ]]
-            .. [[--exclude "*min.js*" ]]
-            .. [[--exclude "*gulp.log" ]]
-            .. [[--exclude "**/node_modules/*" ]],
+        .. [[--exclude "**/.git" ]]
+        .. [[--exclude "**/.idea" ]]
+        .. [[--exclude "**/.vscode" ]]
+        .. [[--exclude "**/build/*" ]]
+        .. [[--exclude "**/vendor/*" ]]
+        .. [[--exclude "**/dist/*" ]]
+        .. [[--exclude "**/yarn.lock" ]]
+        .. [[--exclude "**/package-lock.json" ]]
+        .. [[--exclude "*min.js*" ]]
+        .. [[--exclude "*gulp.log" ]]
+        .. [[--exclude "**/node_modules/*" ]]
 
       require("fzf-lua").setup({
         winopts = {
