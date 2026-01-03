@@ -5,6 +5,10 @@
 -- vim.keymap.del("n", "<S-h>")
 -- vim.keymap.del("n", "<S-l>")
 
+ if vim.g.neovide then
+   vim.g.neovide_input_macos_option_key_is_meta = "only_left"
+ end
+
 vim.api.nvim_set_keymap(
   "n",
   "<leader>dn",

@@ -43,9 +43,9 @@ return {
           formatter = "path.filename_first",
           fd_opts = base_fd_opts,
           actions = {
-            ["ctrl-i"] = { actions.toggle_ignore },
-            ["ctrl-h"] = { actions.toggle_hidden },
-            ["ctrl-e"] = function(_, opts)
+            ["alt-i"] = { actions.toggle_ignore },
+            ["alt-h"] = { actions.toggle_hidden },
+            ["alt-e"] = function(_, opts)
               local ext = vim.fn.input("Filter by extension (space-separated, ! to exclude): ")
               if ext and ext ~= "" then
                 local new_opts = vim.tbl_deep_extend("keep", { resume = true }, opts.__call_opts or {})
@@ -72,9 +72,9 @@ return {
         grep = {
           rg_opts = base_rg_opts,
           actions = {
-            ["ctrl-i"] = { actions.toggle_ignore },
-            ["ctrl-h"] = { actions.toggle_hidden },
-            ["ctrl-e"] = function(_, opts)
+            ["alt-i"] = { actions.toggle_ignore },
+            ["alt-h"] = { actions.toggle_hidden },
+            ["alt-e"] = function(_, opts)
               local ext = vim.fn.input("Filter by extension (space-separated, ! to exclude): ")
               if ext and ext ~= "" then
                 local new_opts = vim.tbl_deep_extend("keep", { resume = true }, opts.__call_opts or {})
