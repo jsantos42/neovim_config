@@ -34,13 +34,13 @@ return {
         },
       },
       {
-        name = "Debug Cashier",
+        name = "Debug Admin",
         type = "php",
         request = "launch",
         port = 9003,
         -- this is needed for a remote app running in a container
         pathMappings = {
-          ["/var/www/html"] = "/Users/jas/Desktop/reposObs/cashier",
+          ["/var/www/html"] = "${workspaceFolder}",
         },
       },
     }
