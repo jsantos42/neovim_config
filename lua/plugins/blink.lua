@@ -15,5 +15,15 @@ return {
     keymap = {
       preset = "super-tab",
     },
+    enabled = function()
+      return vim.g.blink_cmp_enabled == true
+    end,
   },
+  init = function()
+    vim.g.blink_cmp_enabled = true
+    vim.keymap.set("n", "<leader>uk", function()
+      vim.g.blink_cmp_enabled = not vim.g.blink_cmp_enabled
+      vim.notify("Autocompletion " .. (vim.g.blink_cmp_enabled and "enabled" or "disabled"))
+    end, { desc = "Toggle autocompletion" })
+  end,
 }
