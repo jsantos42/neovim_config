@@ -32,6 +32,9 @@ vim.keymap.del("n", "<leader>dO")
 --   vim.fn.winrestview(view)
 -- end, { desc = "Redo without moving cursor" })
 
+-- 0 jumps to first non-blank character instead of column 1 (use | for column 1)
+vim.keymap.set("n", "0", "^", { noremap = true, silent = true })
+
 -- Allow paste in neovide
 vim.keymap.set({ "n", "v", "s", "x", "o", "i", "l", "c", "t" }, "<D-v>", function()
   vim.api.nvim_paste(vim.fn.getreg("+"), true, -1)

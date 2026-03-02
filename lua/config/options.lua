@@ -10,6 +10,18 @@ vim.opt.textwidth = 80
 vim.opt.wrap = true
 vim.opt.wrapscan = false
 
+-- Disable swap/backup files — rely on git instead of recovery files
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.writebackup = false
+
+-- Briefly flash the matching bracket when typing a closing ), ] or }
+vim.opt.showmatch = true
+vim.opt.matchtime = 2
+
+-- Let h, l and arrow keys wrap to the previous/next line at line boundaries
+-- vim.opt.whichwrap:append("<,>,h,l")
+
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.lazyvim_php_lsp = "intelephense"
