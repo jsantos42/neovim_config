@@ -1,4 +1,6 @@
 local is_online = vim.env.NVIM_ONLINE == "1"
+local avante_claude_endpoint = vim.env.AVANTE_CLAUDE_ENDPOINT or "https://api.anthropic.com"
+local avante_claude_model = vim.env.AVANTE_CLAUDE_MODEL or "claude-opus-4-6"
 
 return {
   {
@@ -22,7 +24,15 @@ return {
     -- ⚠️ must add this setting! ! !
     build = vim.fn.has("win32") ~= 0 and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
       or "make",
-    event = "VeryLazy",
+    cmd = {
+      "AvanteAsk",
+      "AvanteChat",
+      "AvanteToggle",
+      "AvanteEdit",
+      "AvanteBuild",
+      "AvanteRefresh",
+      "AvanteSwitchProvider",
+    },
     version = false, -- Never set this value to "*"! Never!
     ---@module 'avante'
     ---@type avante.Config
@@ -34,8 +44,8 @@ return {
       provider = "claude",
       providers = {
         claude = {
-          endpoint = "https://api.anthropic.com",
-          model = "claude-opus-4-6",
+          endpoint = avante_claude_endpoint,
+          model = avante_claude_model,
           timeout = 30000, -- Timeout in milliseconds
           extra_request_body = {
             temperature = 0.75,
