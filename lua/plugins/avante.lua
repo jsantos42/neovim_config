@@ -1,6 +1,6 @@
 local is_online = vim.env.NVIM_ONLINE == "1"
-local avante_claude_endpoint = vim.env.AVANTE_CLAUDE_ENDPOINT or "https://api.anthropic.com"
-local avante_claude_model = vim.env.AVANTE_CLAUDE_MODEL or "claude-opus-4-6"
+local avante_endpoint = vim.env.AVANTE_ENDPOINT or "http://localhost:3456/v1"
+local avante_model = vim.env.AVANTE_MODEL or "claude-opus-4"
 
 return {
   {
@@ -41,11 +41,11 @@ return {
       -- this file can contain specific instructions for your project
       instructions_file = "avante.md",
       -- for example
-      provider = "claude",
+      provider = "openai",
       providers = {
-        claude = {
-          endpoint = avante_claude_endpoint,
-          model = avante_claude_model,
+        openai = {
+          endpoint = avante_endpoint,
+          model = avante_model,
           timeout = 30000, -- Timeout in milliseconds
           extra_request_body = {
             temperature = 0.75,
