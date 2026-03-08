@@ -54,3 +54,20 @@ end)
 
 -- Prepend mise shims to PATH
 vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
+
+-- OSC 52 clipboard for terminal nvim in container (no X11/Wayland available)
+-- Requires terminal emulator OSC 52 support (iTerm2: Preferences > General >
+-- Selection > "Applications in terminal may access clipboard")
+if vim.env.NVIM_CONTAINERIZED and not vim.g.neovide then
+  vim.g.clipboard = {
+    name = "OSC 52",
+    copy = {
+      ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+    },
+    paste = {
+      ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+    },
+  }
+end
