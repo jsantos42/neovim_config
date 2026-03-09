@@ -1,6 +1,4 @@
 local is_online = vim.env.NVIM_ONLINE == "1"
-local avante_endpoint = vim.env.AVANTE_ENDPOINT or "http://localhost:3456/v1"
-local avante_model = vim.env.AVANTE_MODEL or "claude-opus-4"
 
 return {
   {
@@ -17,13 +15,8 @@ return {
   },
   {
     "yetone/avante.nvim",
-    -- KEEP THIS; it will run only in online versions of nvim
-    enabled = vim.env.NVIM_ONLINE == "1",
-
-    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-    -- ⚠️ must add this setting! ! !
-    build = vim.fn.has("win32") ~= 0 and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
-      or "make",
+    enabled = is_online,
+    build = "make",
     cmd = {
       "AvanteAsk",
       "AvanteChat",
@@ -37,19 +30,21 @@ return {
     ---@module 'avante'
     ---@type avante.Config
     opts = {
-      -- add any opts here
-      -- this file can contain specific instructions for your project
       instructions_file = "avante.md",
-      -- for example
-      provider = "openai",
-      providers = {
-        openai = {
-          endpoint = avante_endpoint,
-          model = avante_model,
-          timeout = 30000, -- Timeout in milliseconds
-          extra_request_body = {
-            temperature = 0.75,
-            max_tokens = 20480,
+      input = { provider = "snacks" },
+      provider = "claude-code",
+      -- ACP providers use the Claude Code CLI directly (stdin/stdout JSON-RPC),
+      -- bypassing the need for an API key or proxy. Auth is handled by the CLI's
+      -- own OAuth credentials (Max/Pro subscription).
+      acp_providers = {
+        ["claude-code"] = {
+          command = "bunx",
+          args = { "@zed-industries/claude-code-acp" },
+          env = {
+            HOME = os.getenv("HOME"),
+            NODE_NO_WARNINGS = "1",
+            ACP_PATH_TO_CLAUDE_CODE_EXECUTABLE = vim.fn.exepath("claude"),
+            ACP_PERMISSION_MODE = "bypassPermissions",
           },
         },
       },
@@ -75,10 +70,7 @@ return {
           default = {
             embed_image_as_base64 = false,
             prompt_for_file_name = false,
-            drag_and_drop = {
-              insert_mode = true,
-            },
-            -- required for Windows users
+            drag_and_drop = { insert_mode = true },
             use_absolute_path = true,
           },
         },
@@ -86,9 +78,7 @@ return {
       {
         -- Make sure to set this up properly if you have lazy=true
         "MeanderingProgrammer/render-markdown.nvim",
-        opts = {
-          file_types = { "markdown", "Avante" },
-        },
+        opts = { file_types = { "markdown", "Avante" } },
         ft = { "markdown", "Avante" },
       },
     },
