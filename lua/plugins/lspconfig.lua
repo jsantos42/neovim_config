@@ -4,6 +4,20 @@ return {
     opts = {
       -- @type lspconfig.options
       servers = {
+        -- These servers require outbound network access and have no offline mode
+        docker_compose_language_service = { enabled = false }, -- validates image names against Docker Hub
+        gitlab_ci_ls = { enabled = false },                    -- calls GitLab API
+        github_actions_ls = { enabled = false },               -- calls GitHub API
+        -- yamlls: disable built-in schemaStore so it doesn't fetch schemas from schemastore.org
+        -- (triggered for GitHub Actions, GitLab CI, docker-compose YAML files, etc.)
+        yamlls = {
+          settings = {
+            yaml = {
+              schemaStore = { enable = false, url = "" },
+            },
+          },
+        },
+
         vtsls = {
           settings = {
             vtsls = {
