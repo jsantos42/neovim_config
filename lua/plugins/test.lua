@@ -1,6 +1,9 @@
+local is_notes = vim.env.NVIM_NOTES == "1"
+
 return {
   {
     "nvim-neotest/neotest",
+    enabled = not is_notes,
     dependencies = {
       "haydenmeade/neotest-jest",
       "marilari88/neotest-vitest",

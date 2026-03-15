@@ -9,14 +9,15 @@
    vim.g.neovide_input_macos_option_key_is_meta = "only_left"
  end
 
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>dn",
-  "<cmd>lua require'dap'.step_over()<CR>",
-  { noremap = true, silent = true, desc = "Step Over" }
-)
-
-vim.keymap.del("n", "<leader>dO")
+if vim.env.NVIM_NOTES ~= "1" then
+  vim.api.nvim_set_keymap(
+    "n",
+    "<leader>dn",
+    "<cmd>lua require'dap'.step_over()<CR>",
+    { noremap = true, silent = true, desc = "Step Over" }
+  )
+  vim.keymap.del("n", "<leader>dO")
+end
 
 -- Preserve view position during undo
 -- vim.keymap.set("n", "u", function()

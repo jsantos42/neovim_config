@@ -14,7 +14,7 @@ This is a Neovim configuration repository built on LazyVim.
 - `init.lua` -- entry point, just loads `config.lazy`
 - `lua/config/` -- core settings: options, keymaps, autocmds, lazy.nvim bootstrap
 - `lua/plugins/` -- one file per plugin or plugin group, each returns a lazy.nvim plugin spec table
-- `lazyvim.json` -- declares which LazyVim extras are enabled
+- `lazyvim.json` -- exists for LazyVim compatibility but extras are managed in Lua (see `lua/plugins/lazy-extras.lua`)
 - `queries/blade/` -- tree-sitter queries for Blade template syntax
 - `snippets/` -- JSON snippet files (SQL, Blade)
 
@@ -23,7 +23,8 @@ This is a Neovim configuration repository built on LazyVim.
 - Plugin specs go in `lua/plugins/` as individual files returning a table (or list of tables)
 - Tabs are used for indentation (tabstop=4, noexpandtab) -- enforced in `options.lua`
 - Format Lua with `stylua` (uses `stylua.toml` at repo root)
-- Environment-conditional features check `NVIM_ONLINE` and `NVIM_CONTAINERIZED` env vars
+- Environment-conditional features check `NVIM_ONLINE`, `NVIM_CONTAINERIZED`, and `NVIM_NOTES` env vars
+- LazyVim extras are declared in `lua/plugins/lazy-extras.lua` (not `lazyvim.json`) so they can be conditional on `NVIM_NOTES`. `:LazyExtras` toggle is non-functional — edit the Lua file directly.
 - LSP servers that phone home are disabled/configured for offline use (see `lspconfig.lua` and recent commits)
 - Mason tool installation is handled differently in containers vs native (see `mason.lua`)
 

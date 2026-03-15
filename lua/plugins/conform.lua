@@ -2,6 +2,7 @@ local util = require("conform.util")
 return {
   "stevearc/conform.nvim",
   optional = true,
+  enabled = vim.env.NVIM_NOTES ~= "1",
   opts = {
     formatters_by_ft = {
       php = { "php-cs-fixer" },

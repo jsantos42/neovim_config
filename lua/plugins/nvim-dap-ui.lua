@@ -1,6 +1,7 @@
 -- keymaps: https://github.com/rcarriga/nvim-dap-ui?tab=readme-ov-file#configuration
 return {
   "rcarriga/nvim-dap-ui",
+  enabled = vim.env.NVIM_NOTES ~= "1",
   config = function()
     local dap, dapui = require("dap"), require("dapui")
     dapui.setup({

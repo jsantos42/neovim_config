@@ -1,6 +1,7 @@
 return {
   "mfussenegger/nvim-dap",
   optional = true,
+  enabled = vim.env.NVIM_NOTES ~= "1",
   opts = function()
     local dap = require("dap")
     local path = vim.fn.expand("$MASON/packages/php-debug-adapter")

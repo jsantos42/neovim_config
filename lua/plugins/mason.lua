@@ -21,6 +21,7 @@
 --    race conditions and slow startup.
 
 local is_containerized = vim.env.NVIM_CONTAINERIZED == "1"
+local is_notes = vim.env.NVIM_NOTES == "1"
 
 return {
   {
@@ -29,6 +30,7 @@ return {
   },
   {
     "mason-org/mason.nvim",
+    enabled = not is_notes,
     opts = function(_, opts)
       if is_containerized then
         opts.ensure_installed = {

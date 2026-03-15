@@ -24,7 +24,9 @@ vim.opt.matchtime = 2
 
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
-vim.g.lazyvim_php_lsp = "intelephense"
+if vim.env.NVIM_NOTES ~= "1" then
+  vim.g.lazyvim_php_lsp = "intelephense"
+end
 
 vim.o.tabstop = 4
 vim.o.expandtab = false
