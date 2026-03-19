@@ -22,6 +22,13 @@ cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
           .. app
           .. "/pages/index.jsx"
       )
+      -- hide the mermaid modifications from lazy.nvim's git status check
+      -- NOTE: after a :Lazy restore, lazy.nvim resets the plugin to the locked
+      -- commit, undoing these patches. Re-run the build manually with :Lazy build
+      -- markdown-preview.nvim to restore mermaid v11 support.
+      vim.fn.system(
+        "git -C " .. plugin.dir .. " update-index --skip-worktree app/_static/mermaid.min.js app/pages/index.jsx"
+      )
     end,
     init = function()
       vim.g.mkdp_filetypes = { "markdown" }
