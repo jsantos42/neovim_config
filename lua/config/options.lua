@@ -40,6 +40,7 @@ vim.g.root_spec = {
 }
 
 vim.g.autoformat = false
+vim.g.lazyvim_check_order = false
 
 -- Neovide
 vim.g.neovide_theme = "auto"
