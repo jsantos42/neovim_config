@@ -5,7 +5,7 @@ A personalized Neovim configuration built on [LazyVim](https://lazyvim.github.io
 ## Features
 
 - **LazyVim base** with curated extras for TypeScript, Python, Go, PHP, Java, SQL, YAML, JSON, and Docker
-- **Notes mode** -- `NVIM_NOTES=1` disables dev extras and enables orgmode, csvview.nvim, image.nvim
+- **Notes mode** -- `NVIM_NOTES=1` disables dev extras for a lightweight markdown-focused setup
 - **Container-aware** -- OSC 52 clipboard, conditional mason setup, online/offline mode toggle (`NVIM_ONLINE`, `NVIM_CONTAINERIZED` env vars)
 - **AI integration** via [avante.nvim](https://github.com/yetone/avante.nvim) backed by Claude Code (activates when `NVIM_ONLINE=1`)
 - **PHP/Blade** first-class support -- Intelephense LSP, tree-sitter highlighting/injections, blade-formatter, XDebug debugging with Docker path mappings
@@ -66,7 +66,7 @@ All LazyVim defaults apply. Additional custom mappings:
 |----------|--------|
 | `NVIM_ONLINE=1` | Enables AI features (avante.nvim) |
 | `NVIM_CONTAINERIZED=1` | Switches to OSC 52 clipboard, adjusts mason |
-| `NVIM_NOTES=1` | Disables dev extras (LSPs, DAP, testing, formatters, linters); enables orgmode, csvview.nvim, image.nvim |
+| `NVIM_NOTES=1` | Disables dev extras (LSPs, DAP, testing, formatters, linters); markdown-focused mode |
 
 ### LazyVim extras managed in Lua (not lazyvim.json)
 
@@ -85,53 +85,24 @@ Once enabled, yanking text in Neovim inside the container will copy it to your h
 
 ## Notes mode (local, non-containerised)
 
-A lightweight note-taking mode using orgmode, csvview.nvim, and image.nvim. Runs natively on the host (not in a container) so that inline images work via iTerm2's Kitty graphics protocol.
-
-### Setup (one-time)
-
-```bash
-# image.nvim dependencies
-brew install imagemagick luarocks
-luarocks --lua-version=5.1 install magick
-```
-
-Add to `~/.zshrc`:
+A lightweight markdown note-taking mode. Add to `~/.zshrc`:
 
 ```bash
 alias notes='NVIM_NOTES=1 nvim ~/Documents/notes'
-```
-
-### Usage
-
-```bash
-notes                # opens nvim at ~/Documents/notes with notes plugins only
 ```
 
 ### What changes in notes mode
 
 - All dev extras disabled (LSPs, DAP, testing, formatters, linters, lang extras)
 - Mason disabled
-- Treesitter limited to markdown, csv, lua, vim, vimdoc, query, bash, regex
-- Orgmode enabled with agenda at `~/Documents/notes`
-- csvview.nvim for CSV/TSV files
-- image.nvim for inline images in org/markdown (requires iTerm2 or Kitty terminal)
-
-### Inline images
-
-Org-mode image links render inline in the editor:
-
-```org
-[[file:photo.jpg]]
-```
-
-Requires iTerm2 (or another terminal with Kitty graphics protocol support). Does not work in Neovide, macOS Terminal.app, or through `docker exec`.
+- Treesitter limited to markdown, lua, vim, vimdoc, query, bash, regex
 
 ## Requirements
 
 - Neovim >= 0.10
 - A Nerd Font for icons
 - For AI features: [Claude Code](https://claude.ai/claude-code) CLI
-- For notes mode: `imagemagick`, `luarocks`, `magick` rock (see Notes mode section)
+- For notes mode: no additional requirements
 
 ## License
 

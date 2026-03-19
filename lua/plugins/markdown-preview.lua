@@ -1,8 +1,7 @@
 return {
   {
     "iamcco/markdown-preview.nvim",
-    enabled = vim.env.NVIM_NOTES ~= "1",
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     build = function(plugin)
       local app = plugin.dir .. "/app"
       -- Use bun (available in container) with npm fallback

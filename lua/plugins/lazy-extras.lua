@@ -35,7 +35,6 @@ local notes_plugins = {
       opts.ensure_installed = {
         "markdown",
         "markdown_inline",
-        "csv",
         "lua",
         "vim",
         "vimdoc",
@@ -44,25 +43,6 @@ local notes_plugins = {
         "regex",
       }
     end,
-  },
-  {
-    "nvim-orgmode/orgmode",
-    event = "VeryLazy",
-    ft = { "org" },
-    opts = {
-      org_agenda_files = "/notes/**/*",
-      org_default_notes_file = "/notes/refile.org",
-    },
-  },
-  {
-    "hat0uma/csvview.nvim",
-    ft = { "csv", "tsv" },
-    opts = {},
-  },
-  {
-    "3rd/image.nvim",
-    ft = { "org", "markdown" },
-    opts = {},
   },
 }
 

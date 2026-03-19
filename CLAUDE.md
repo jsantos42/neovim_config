@@ -35,6 +35,8 @@ This is a Neovim configuration repository built on LazyVim.
 - Completion (blink.cmp) can be toggled at runtime with `<leader>uk`
 - Colorscheme auto-switches between dark (vague.nvim) and light (vscode.nvim) based on `vim.o.background`
 - fzf-lua syncs its search root with neo-tree's current directory
+- Markdown preview (markdown-preview.nvim) is enabled unconditionally across all modes
+- Notes mode (`NVIM_NOTES=1`) is markdown-only — no orgmode, no csvview
 
 ## Testing changes
 
