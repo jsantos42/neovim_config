@@ -1,7 +1,7 @@
 return {
   {
     "iamcco/markdown-preview.nvim",
-cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     build = function(plugin)
       local app = plugin.dir .. "/app"
       -- Use bun (available in container) with npm fallback
@@ -35,7 +35,6 @@ cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
       if vim.env.NVIM_CONTAINERIZED == "1" then
         vim.g.mkdp_open_to_the_world = 1
         vim.g.mkdp_open_ip = "127.0.0.1"
-        vim.g.mkdp_port = 6670
         vim.cmd([[
           function! MarkdownPreviewOpenURL(url)
             let @+ = a:url
@@ -44,6 +43,65 @@ cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
         ]])
         vim.g.mkdp_browserfunc = "MarkdownPreviewOpenURL"
       end
+    end,
+    config = function()
+      if vim.env.NVIM_CONTAINERIZED ~= "1" then
+        return
+      end
+
+      -- Find first available port in the mapped range (6670-6673) by
+      -- attempting to bind+listen. At MarkdownPreview invocation time,
+      -- any port already used by another instance's server will fail the
+      -- probe, so we reliably pick a free one.
+      local function pick_free_port()
+        for p = 6670, 6673 do
+          local sock = vim.uv.new_tcp()
+          local ok = sock:bind("0.0.0.0", p)
+          if ok == 0 then
+            local lok = sock:listen(1, function() end)
+            sock:close()
+            if lok == 0 then
+              return p
+            end
+          else
+            sock:close()
+          end
+        end
+        return 6670
+      end
+
+      -- Override the buffer-local MarkdownPreview command to pick a free
+      -- port just before launching the server. The plugin defines these as
+      -- buffer-local commands via s:init_command(), so we re-register them
+      -- after the plugin's autocmd fires.
+      -- The plugin registers buffer-local commands on BufEnter, so we must
+      -- re-register ours after it. vim.schedule defers to after all current
+      -- autocmds finish, ensuring we always win.
+      vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
+        pattern = "*",
+        callback = function(ev)
+          if vim.bo[ev.buf].filetype ~= "markdown" then
+            return
+          end
+          vim.schedule(function()
+            if not vim.api.nvim_buf_is_valid(ev.buf) then
+              return
+            end
+            vim.api.nvim_buf_create_user_command(ev.buf, "MarkdownPreview", function()
+              if vim.g.mkdp_clients_active == 0 then
+                vim.g.mkdp_port = pick_free_port()
+              end
+              vim.fn["mkdp#util#open_preview_page"]()
+            end, { force = true })
+            vim.api.nvim_buf_create_user_command(ev.buf, "MarkdownPreviewToggle", function()
+              if vim.g.mkdp_clients_active == 0 then
+                vim.g.mkdp_port = pick_free_port()
+              end
+              vim.fn["mkdp#util#toggle_preview"]()
+            end, { force = true })
+          end)
+        end,
+      })
     end,
     ft = { "markdown" },
   },
