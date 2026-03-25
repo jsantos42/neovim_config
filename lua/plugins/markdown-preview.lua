@@ -35,7 +35,7 @@ cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
       if vim.env.NVIM_CONTAINERIZED == "1" then
         vim.g.mkdp_open_to_the_world = 1
         vim.g.mkdp_open_ip = "127.0.0.1"
-        vim.g.mkdp_port = 8089
+        vim.g.mkdp_port = 6670
         vim.cmd([[
           function! MarkdownPreviewOpenURL(url)
             let @+ = a:url
