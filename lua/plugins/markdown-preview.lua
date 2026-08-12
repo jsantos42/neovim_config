@@ -27,8 +27,13 @@ return {
       -- commit, undoing these patches. Re-run the build manually with :Lazy build
       -- markdown-preview.nvim to restore mermaid v11 support.
       vim.fn.system(
-        "git -C " .. plugin.dir .. " update-index --skip-worktree app/_static/mermaid.min.js app/pages/index.jsx"
+        "git -C "
+          .. plugin.dir
+          .. " update-index --skip-worktree app/_static/mermaid.min.js app/pages/index.jsx app/package.json"
       )
+      -- bun also writes app/bun.lock; keep it out of git's untracked list so
+      -- lazy.nvim's dirty check stays clean.
+      vim.fn.system("git -C " .. plugin.dir .. " check-ignore -q app/bun.lock || echo 'app/bun.lock' >> " .. plugin.dir .. "/.git/info/exclude")
     end,
     init = function()
       vim.g.mkdp_filetypes = { "markdown" }
