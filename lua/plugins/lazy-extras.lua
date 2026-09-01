@@ -10,6 +10,7 @@ local is_notes = vim.env.NVIM_NOTES == "1"
 
 -- Dev extras — disabled in notes mode
 local dev_extras = {
+  { import = "lazyvim.plugins.extras.lang.markdown" },
   { import = "lazyvim.plugins.extras.dap.core" },
   { import = "lazyvim.plugins.extras.test.core" },
   { import = "lazyvim.plugins.extras.formatting.prettier" },
@@ -27,6 +28,7 @@ local dev_extras = {
 
 -- Notes-only plugins
 local notes_plugins = {
+  { import = "lazyvim.plugins.extras.lang.markdown" },
   -- Override LazyVim's default treesitter ensure_installed (which includes jsonc
   -- and other dev parsers that aren't bundled or needed in notes mode)
   {

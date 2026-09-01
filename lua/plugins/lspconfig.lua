@@ -1,7 +1,10 @@
+if vim.env.NVIM_NOTES == "1" then
+	return {}
+end
+
 return {
   {
     "neovim/nvim-lspconfig",
-    enabled = vim.env.NVIM_NOTES ~= "1",
     opts = {
       -- @type lspconfig.options
       servers = {
