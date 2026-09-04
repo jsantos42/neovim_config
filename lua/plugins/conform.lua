@@ -1,5 +1,15 @@
 if vim.env.NVIM_NOTES == "1" then
-	return {}
+	return {
+		{
+			"stevearc/conform.nvim",
+			optional = true,
+			opts = {
+				formatters_by_ft = {
+					markdown = { "prettier" },
+				},
+			},
+		},
+	}
 end
 
 local util = require("conform.util")
@@ -13,6 +23,7 @@ return {
       sql = { "sqruff" }, --INFO: if there's an error in the file (trailing comma for example), the formatting goes wrong
       js = { "prettier" },
       ts = { "prettier" },
+      markdown = { "prettier" },
     },
     formatters = {
       injected = { options = { ignore_errors = true } },
