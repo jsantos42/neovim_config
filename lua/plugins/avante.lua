@@ -91,3 +91,10 @@ return {
     },
   },
 }
+-- To upgrade to qwen3:27b for agentic mode (M4 Pro 48GB, Q4_K_M ~18GB, ~8-10 tok/s):
+--   1. Bump MEMORY in local-llm/setup.sh to 32768, then: ./setup.sh resize_machine --memory=32768
+--   2. Pull the model: podman exec ollama ollama pull qwen3:27b
+--   3. Change model to "qwen3:27b", mode to "agentic", remove disable_tools = true
+--   4. Consider removing tag = "v0.1.2" pin — newer Avante has Ollama agentic fixes
+-- With 8B, legacy + disable_tools is needed: the model can't reliably follow the
+-- ReAct tool-use protocol (exact str_replace matches, attempt_completion calls).
