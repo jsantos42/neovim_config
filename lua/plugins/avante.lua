@@ -91,10 +91,65 @@ return {
     },
   },
 }
--- To upgrade to qwen3:27b for agentic mode (M4 Pro 48GB, Q4_K_M ~18GB, ~8-10 tok/s):
---   1. Bump MEMORY in local-llm/setup.sh to 32768, then: ./setup.sh resize_machine --memory=32768
---   2. Pull the model: podman exec ollama ollama pull qwen3:27b
---   3. Change model to "qwen3:27b", mode to "agentic", remove disable_tools = true
---   4. Consider removing tag = "v0.1.2" pin — newer Avante has Ollama agentic fixes
--- With 8B, legacy + disable_tools is needed: the model can't reliably follow the
--- ReAct tool-use protocol (exact str_replace matches, attempt_completion calls).
+
+-- gemma4:26b cannot follow Avante's edit protocol — it hallucinates tool
+-- calls and claims success without modifying files. Use qwen3_6 instead.
+
+-- ============================================================================
+-- UPGRADE NOTES: v0.1.2 -> v0.2.3 (latest as of 2026-09-10)
+-- ============================================================================
+--
+-- BREAKING CHANGES requiring config migration:
+--   1. cursor_applying_provider was removed — delete that line from opts.
+--   2. Shared libraries moved — run :AvanteBuild after first launch.
+--   3. Default mode is now "agentic" (our explicit mode = "legacy" still works).
+--   4. vendors key deprecated — we already use providers, so no issue.
+--   5. require("avante_lib").load() deprecated — auto-discovered after :AvanteBuild.
+--
+-- OLLAMA-SPECIFIC CHANGES:
+--   - Ollama is now a first-class built-in provider with dedicated backend code.
+--   - New defaults: num_ctx=20480, keep_alive="5m".
+--   - New use_ReAct_prompt option (default true for Ollama) enables XML-based tool
+--     calls in text output. Moot with disable_tools = true.
+--   - is_env_set override still valid. Default now pings the endpoint; hardcoding
+--     true avoids startup latency for remote/Docker endpoints.
+--   - disable_tools (bool, per-provider) vs disabled_tools (list, global top-level):
+--     the latter selectively disables specific tools by name.
+--   - Consider adding keep_alive = "5m" and timeout = 30000 to provider config.
+--
+-- OLLAMA AGENTIC MODE STATUS (still broken):
+--   Multiple issues (#2938, #2830, #2093, #2048) report infinite tool-calling loops,
+--   UI freezes, and tools detected but never executed with models from 7B to 70B.
+--   Maintainers closed several as "not planned" — considered a model limitation.
+--   Our mode = "legacy" + disable_tools = true is the community-recommended approach.
+--   Legacy mode has no concrete deprecation plans despite the name (#1956, closed stale).
+--
+-- KNOWN REGRESSIONS TO WATCH:
+--   - #2694: num_ctx settings may be ignored with Ollama (always defaults to 20480).
+--   - #2557/#2165: :AvanteModels / <leader>a? model picker doesn't display Ollama models.
+--
+-- NOTABLE NEW FEATURES:
+--   - ACP (Agent Client Protocol): integrate external agents (Claude Code, Gemini CLI)
+--     via JSON-RPC. The real answer for agentic work with local models — keep Ollama for
+--     legacy queries, delegate tool-heavy tasks to a capable external agent.
+--   - Zen/CLI mode (contrib/avante): Claude Code-like terminal experience.
+--   - Project instructions: avante.md file per project (like CLAUDE.md).
+--   - /model in-chat command: switch models mid-conversation.
+--   - Memory summarization: manage context windows for long conversations.
+--   - RAG service: project-wide retrieval-augmented generation.
+--   - Token count display in the sidebar.
+--   - Loading performance optimizations in v0.2.1.
+--
+-- UPGRADE STEPS (if unpinning):
+--   1. Change tag = "v0.1.2" to tag = "v0.2.3" (or remove for HEAD).
+--   2. Remove cursor_applying_provider = "ollama" from opts.
+--   3. Keep mode = "legacy" and disable_tools = true.
+--   4. Optionally add keep_alive = "5m" and timeout = 30000 to ollama provider.
+--   5. Run :AvanteBuild after first launch.
+--   6. Confirm Neovim >= 0.11.0.
+--
+-- REFERENCES:
+--   - Provider migration: github.com/yetone/avante.nvim/wiki/Provider-configuration-migration-guide
+--   - Ollama provider docs: mintlify.wiki/yetone/avante.nvim/providers/ollama
+--   - Agentic vs Legacy: deepwiki.com/yetone/avante.nvim/11.4-interaction-modes
+-- ============================================================================
