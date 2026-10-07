@@ -27,8 +27,8 @@ lua/
     lspconfig.lua           LSP servers (vtsls, intelephense, html, css, tailwind, pyright, sqls, yaml)
     mason.lua               Mason config (container-aware)
     blink.lua               Completion engine (blink.cmp) with toggle
-    conform.lua             Formatting (prettier, php-cs-fixer, blade-formatter, sqruff)
-    linters.lua             Linting (sqruff)
+    conform.lua             Formatting (prettier, pint for PHP + Blade, sqruff)
+    linters.lua             Linting (sqruff, mago + phpstan for PHP)
     fzf-lua.lua             Fuzzy finder with custom grep/search mappings
     neo-tree.lua            File tree with cwd sync and relative path copy
     avante.lua              Claude Code AI assistant
@@ -47,26 +47,26 @@ snippets/                   SQL and Blade snippet libraries
 
 All LazyVim defaults apply. Additional custom mappings:
 
-| Key | Mode | Action |
-|-----|------|--------|
-| `<leader>dn` | n | DAP step over |
-| `<leader>tl` | n | Run last test |
-| `<leader>tL` | n | Debug last test |
-| `<leader>tw` | n | Run test in watch mode |
-| `<leader>uk` | n | Toggle completion |
-| `<leader>sG` | n | Grep (current directory) |
-| `<leader>sl` | n | Literal grep |
-| `0` | n | First non-blank character (like `^`) |
-| `<D-=>` / `<D-->` | n | Neovide zoom in/out |
-| `<D-v>` | all | Paste in Neovide |
+| Key               | Mode | Action                               |
+| ----------------- | ---- | ------------------------------------ |
+| `<leader>dn`      | n    | DAP step over                        |
+| `<leader>tl`      | n    | Run last test                        |
+| `<leader>tL`      | n    | Debug last test                      |
+| `<leader>tw`      | n    | Run test in watch mode               |
+| `<leader>uk`      | n    | Toggle completion                    |
+| `<leader>sG`      | n    | Grep (current directory)             |
+| `<leader>sl`      | n    | Literal grep                         |
+| `0`               | n    | First non-blank character (like `^`) |
+| `<D-=>` / `<D-->` | n    | Neovide zoom in/out                  |
+| `<D-v>`           | all  | Paste in Neovide                     |
 
 ## Environment variables
 
-| Variable | Effect |
-|----------|--------|
-| `NVIM_ONLINE=1` | Enables AI features (avante.nvim) |
-| `NVIM_CONTAINERIZED=1` | Switches to OSC 52 clipboard, adjusts mason |
-| `NVIM_NOTES=1` | Disables dev extras (LSPs, DAP, testing, formatters, linters); markdown-focused mode |
+| Variable               | Effect                                                                               |
+| ---------------------- | ------------------------------------------------------------------------------------ |
+| `NVIM_ONLINE=1`        | Enables AI features (avante.nvim)                                                    |
+| `NVIM_CONTAINERIZED=1` | Switches to OSC 52 clipboard, adjusts mason                                          |
+| `NVIM_NOTES=1`         | Disables dev extras (LSPs, DAP, testing, formatters, linters); markdown-focused mode |
 
 ### LazyVim extras managed in Lua (not lazyvim.json)
 
@@ -78,7 +78,7 @@ When running Neovim inside a container (or over SSH), there is no X11 or Wayland
 
 For this to work, your terminal emulator must have OSC 52 support enabled:
 
-- **iTerm2**: Go to *Preferences > General > Selection* and check **"Applications in terminal may access clipboard"**
+- **iTerm2**: Go to _Preferences > General > Selection_ and check **"Applications in terminal may access clipboard"**
 - **macOS Terminal.app**: Not supported -- use iTerm2 or another terminal
 
 Once enabled, yanking text in Neovim inside the container will copy it to your host system clipboard, and pasting from the host clipboard will work as expected.

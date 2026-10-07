@@ -37,10 +37,12 @@ This is a Neovim configuration repository built on LazyVim.
 - fzf-lua syncs its search root with neo-tree's current directory
 - Markdown preview (markdown-preview.nvim) is enabled unconditionally across all modes
 - Notes mode (`NVIM_NOTES=1`) is markdown-only — no orgmode, no csvview
+- PHP: conform's `pint` (project `vendor/bin/pint` first, global fallback) formats PHP and Blade (`pint_blade`, `--blade`) from the project root, adding `--preset=psr12` only when there's no `pint.json`. nvim-lint runs `mago_lint` (with the `emacs` report format — Mago 1.52's `short` format embeds ANSI colours) and `phpstan` only where `vendor/bin/phpstan` exists. Tools come from the dev-env image. When the project's installed Pint (from `vendor/composer/installed.json`) is older than 1.30, `pint_blade` is skipped and `vim.notify_once` warns once per project
 
 ## Testing changes
 
 Open Neovim and verify the config loads without errors:
+
 ```sh
 nvim --headless "+lua print('ok')" +qa
 ```
