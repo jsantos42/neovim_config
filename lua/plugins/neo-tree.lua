@@ -17,6 +17,11 @@ return {
           },
         },
       },
+      filtered_items = {
+        hide_by_pattern = {
+          "*_test.go",
+        },
+      },
       commands = {
         -- Sync neo-tree root changes to vim's cwd so file search/grep follow along
         set_root = function(state)
