@@ -87,6 +87,8 @@ end
 return {
   "stevearc/conform.nvim",
   optional = true,
+  ---@module "conform"
+  ---@type conform.setupOpts
   opts = {
     formatters_by_ft = {
       php = { "pint" },
@@ -100,9 +102,13 @@ return {
       injected = { options = { ignore_errors = true } },
 
       pint = {
+        ---@param _ conform.JobFormatterConfig
+        ---@param ctx conform.Context
         cwd = function(_, ctx)
           return pint_project_root(ctx)
         end,
+        ---@param _ conform.JobFormatterConfig
+        ---@param ctx conform.Context
         args = function(_, ctx)
           return pint_args(ctx, {})
         end,
@@ -110,12 +116,18 @@ return {
 
       pint_blade = {
         inherit = "pint",
+        ---@param _ conform.JobFormatterConfig
+        ---@param ctx conform.Context
         condition = function(_, ctx)
           return supports_blade(ctx)
         end,
+        ---@param _ conform.JobFormatterConfig
+        ---@param ctx conform.Context
         cwd = function(_, ctx)
           return pint_project_root(ctx)
         end,
+        ---@param _ conform.JobFormatterConfig
+        ---@param ctx conform.Context
         args = function(_, ctx)
           return pint_args(ctx, { "--blade" })
         end,

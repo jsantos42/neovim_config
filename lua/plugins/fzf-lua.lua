@@ -45,6 +45,8 @@ return {
           actions = {
             ["alt-i"] = { actions.toggle_ignore },
             ["alt-h"] = { actions.toggle_hidden },
+            ---@param _ string[]
+            ---@param opts fzf-lua.config.Resolved
             ["alt-e"] = function(_, opts)
               local ext = vim.fn.input("Filter by extension (space-separated, ! to exclude): ")
               if ext and ext ~= "" then
@@ -74,6 +76,8 @@ return {
           actions = {
             ["alt-i"] = { actions.toggle_ignore },
             ["alt-h"] = { actions.toggle_hidden },
+            ---@param _ string[]
+            ---@param opts fzf-lua.config.Resolved
             ["alt-e"] = function(_, opts)
               local ext = vim.fn.input("Filter by extension (space-separated, ! to exclude): ")
               if ext and ext ~= "" then

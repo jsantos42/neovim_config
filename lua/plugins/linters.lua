@@ -54,6 +54,7 @@ return {
         cmd = function()
           return find_upward("vendor/bin/phpstan", vim.fn.expand("%:p:h"))
         end,
+        ---@param ctx { filename: string, dirname: string }
         condition = function(ctx)
           return find_upward("vendor/bin/phpstan", ctx.dirname) ~= nil
         end,

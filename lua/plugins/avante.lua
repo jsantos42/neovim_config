@@ -4,6 +4,8 @@ end
 
 return {
   "avante-corp/avante.nvim",
+  ---@module "avante"
+  ---@type avante.Config
   tag = "v0.1.2",
   build = "make",
   cmd = {

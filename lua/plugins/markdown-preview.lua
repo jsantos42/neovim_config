@@ -2,6 +2,7 @@ return {
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ---@param plugin LazyPlugin
     build = function(plugin)
       local app = plugin.dir .. "/app"
       -- Use bun (available in container) with npm fallback
@@ -33,7 +34,13 @@ return {
       )
       -- bun also writes app/bun.lock; keep it out of git's untracked list so
       -- lazy.nvim's dirty check stays clean.
-      vim.fn.system("git -C " .. plugin.dir .. " check-ignore -q app/bun.lock || echo 'app/bun.lock' >> " .. plugin.dir .. "/.git/info/exclude")
+      vim.fn.system(
+        "git -C "
+          .. plugin.dir
+          .. " check-ignore -q app/bun.lock || echo 'app/bun.lock' >> "
+          .. plugin.dir
+          .. "/.git/info/exclude"
+      )
     end,
     init = function()
       vim.g.mkdp_filetypes = { "markdown" }
@@ -84,6 +91,7 @@ return {
       -- autocmds finish, ensuring we always win.
       vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
         pattern = "*",
+        ---@param ev vim.api.keyset.create_autocmd.callback_args
         callback = function(ev)
           if vim.bo[ev.buf].filetype ~= "markdown" then
             return

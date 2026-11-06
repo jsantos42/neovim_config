@@ -1,11 +1,14 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
+  ---@module "neo-tree"
+  ---@type neotree.Config
   opts = {
     filesystem = {
       window = {
         mappings = {
           -- Override the yank path commands to use relative paths
           ["Y"] = {
+            ---@param state neotree.sources.filesystem.StateWithTree
             function(state)
               local node = state.tree:get_node()
               local filepath = node:get_id()
@@ -24,6 +27,7 @@ return {
       },
       commands = {
         -- Sync neo-tree root changes to vim's cwd so file search/grep follow along
+        ---@param state neotree.sources.filesystem.StateWithTree
         set_root = function(state)
           local node = state.tree:get_node()
           local path = node:get_id()
@@ -33,6 +37,7 @@ return {
           require("neo-tree.sources.filesystem.commands").set_root(state)
           vim.fn.chdir(path)
         end,
+        ---@param state neotree.sources.filesystem.State
         navigate_up = function(state)
           local parent = vim.fn.fnamemodify(state.path, ":h")
           require("neo-tree.sources.filesystem.commands").navigate_up(state)
